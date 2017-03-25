@@ -21,6 +21,7 @@
         <Vaadin-Addon>${project.artifactId}-${project.version}.jar</Vaadin-Addon>
         <github.account>johannesh2</github.account>
         <github.project>textfieldformatter</github.project>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
     <scm>
         <url>https://github.com/${github.account}/${github.project}</url>
@@ -63,6 +64,12 @@
             <version>${vaadin.version}</version>
             <scope>test</scope>
         </dependency>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-testbench</artifactId>
+			<version>5.0.0</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
    <repositories>
         <repository>
@@ -192,7 +199,12 @@
             </build>
         </profile>
         <profile>
-            <id>browsertests</id>
+            <id>testbench-with-license-file</id>
+            <activation>
+                <file>
+                    <exists>${user.home}/vaadin.testbench.developer.license</exists>
+                </file>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
@@ -229,11 +241,85 @@
                     </plugin>
                 </plugins>
             </build>
-            <activation>
-                <!-- Change to run browser tests on each build -->
-                <activeByDefault>false</activeByDefault>
-            </activation>
         </profile>
-    </profiles>
-    
+        <profile>
+            <id>testbench-with-license-property</id>
+            <activation>
+                <property>
+                    <name>vaadin.testbench.developer.license</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.webdriverextensions</groupId>
+                        <artifactId>webdriverextensions-maven-plugin</artifactId>
+                        <version>3.1.1</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>install-drivers</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <drivers>
+                                <driver>
+                                    <name>phantomjs</name>
+                                </driver>
+                            </drivers>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>2.19.1</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>no-testbench</id>
+            <activation>
+                <file>
+                    <missing>${user.home}/vaadin.testbench.developer.license</missing>
+                </file>
+                <property>
+                    <name>!vaadin.testbench.developer.license</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.ekryd.echo-maven-plugin</groupId>
+                        <artifactId>echo-maven-plugin</artifactId>
+                        <version>1.2.0</version>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>echo</goal>
+                                </goals>
+                                <configuration>
+                                    <message>Install a TestBench license in
+                                        ${user.home}/.vaadin.testbench.developer.license
+                                        or provide it
+                                        with a system property -Dvaadin.testbench.developer.license to
+                                        run tests</message>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+	</profiles>
 </project>
