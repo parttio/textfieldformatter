@@ -13,17 +13,17 @@ window.org_vaadin_textfieldformatter_AbstractTextFieldFormatterExtension = funct
 		});
 	} else if (this.getState().formatBlocks) {
 
-		if (connector.getState().delimeters) {
+		if (connector.getState().delimiters) {
 			new Cleave(el, {
 				blocks: connector.getState().formatBlocks,
-				delimeters: connector.getState().delimeters,
+				delimiters: connector.getState().delimiters,
 				uppercase: connector.getState().uppercase,
 				lowercase: connector.getState().lowercase
 			});
 		} else if (connector.getState().delimiter) {
 			new Cleave(el, {
 				blocks: connector.getState().formatBlocks,
-				delimeter: connector.getState().delimeter,
+				delimiter: connector.getState().delimiter,
 				uppercase: connector.getState().uppercase,
 				lowercase: connector.getState().lowercase
 			});

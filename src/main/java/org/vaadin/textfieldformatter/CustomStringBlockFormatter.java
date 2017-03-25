@@ -4,10 +4,10 @@ import com.vaadin.ui.AbstractTextField;
 
 public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtension {
 
-	public CustomStringBlockFormatter(AbstractTextField field, int[] blocks, String[] delimeters, ForceCase forceCase) {
+	public CustomStringBlockFormatter(AbstractTextField field, int[] blocks, String[] delimiters, ForceCase forceCase) {
 		super(field);
 		getState().formatBlocks = blocks;
-		getState().delimeters = delimeters;
+		getState().delimiters = delimiters;
 		if (forceCase == ForceCase.UPPER) {
 			getState().lowercase = false;
 			getState().uppercase = true;			
