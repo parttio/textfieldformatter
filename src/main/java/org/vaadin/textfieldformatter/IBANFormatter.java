@@ -7,7 +7,7 @@ import com.vaadin.ui.AbstractTextField;
 public class IBANFormatter extends CustomStringBlockFormatter {
 
 	public IBANFormatter(AbstractTextField field, int[] blocks) {
-		super(field, blocks);
+		super(field, blocks, ForceCase.UPPER);
 	}
 	
 	public static IBANFormatter fromIBANLength(AbstractTextField field, int length) {
