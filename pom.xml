@@ -65,6 +65,12 @@
             <scope>test</scope>
         </dependency>
 		<dependency>
+		    <groupId>com.vaadin</groupId>
+		    <artifactId>vaadin-testbench-api</artifactId>
+		    <version>8.0.4</version>
+            <scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-testbench</artifactId>
 			<version>5.0.0</version>
