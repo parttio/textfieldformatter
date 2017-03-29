@@ -11,6 +11,11 @@ window.org_vaadin_textfieldformatter_AbstractTextFieldFormatterExtension = funct
 				connector.onCreditCardChanged(type);
 			}
 		});
+	} else if (this.getState().formatPhone) {
+		var cleave = new Cleave(el, {
+			phone: true,
+			phoneRegionCode: connector.getState().phoneRegionCode
+		});
 	} else if (this.getState().formatBlocks) {
 
 		if (connector.getState().delimiters) {
