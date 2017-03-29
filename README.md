@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/johannesh2/textfieldformatter.svg?branch=master)](https://travis-ci.org/johannesh2/textfieldformatter)
 
-[![Vaadin_Directory](https://img.shields.io/badge/Vaadin%20Directory-available-brightgreen.svg)](https://vaadin.com/addon/textfield-formatter)
+[![Vaadin_Directory](https://img.shields.io/badge/Vaadin%20Directory-install-brightgreen.svg)](https://vaadin.com/addon/textfield-formatter)
 # TextField Formatter
 
 This is an awesome TextField formatter extension built on top [Cleave.js](https://nosir.github.io/cleave.js/).
