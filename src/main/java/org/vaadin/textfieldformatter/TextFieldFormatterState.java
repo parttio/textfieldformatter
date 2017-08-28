@@ -11,5 +11,9 @@ public class TextFieldFormatterState extends JavaScriptExtensionState {
 	public boolean lowercase = false;
 	public boolean formatPhone = false;
 	public String phoneRegionCode;
-	
+	public boolean formatNumeral = false;
+	public int numeralIntegerScale;
+	public int numeralDecimalScale;
+	public String numeralDecimalMark;
+	public boolean numeralPositiveOnly;
 }

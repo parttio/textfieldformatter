@@ -16,8 +16,26 @@ window.org_vaadin_textfieldformatter_AbstractTextFieldFormatterExtension = funct
 			phone: true,
 			phoneRegionCode: connector.getState().phoneRegionCode
 		});
+	}  else if (this.getState().formatNumeral) {
+		if (connector.getState().numeralIntegerScale) {
+			var cleave = new Cleave(el, {
+			    numeral: true,
+			    numeralIntegerScale: connector.getState().numeralIntegerScale,
+			    numeralDecimalScale: connector.getState().numeralDecimalScale,
+			    numeralDecimalMark: connector.getState().numeralDecimalMark,
+			    delimiter: connector.getState().delimiter,
+			    numeralPositiveOnly: connector.getState().numeralPositiveOnly,
+			});
+		} else {
+			var cleave = new Cleave(el, {
+			    numeral: true,
+			    numeralDecimalScale: connector.getState().numeralDecimalScale,
+			    numeralDecimalMark: connector.getState().numeralDecimalMark,
+			    delimiter: connector.getState().delimiter,
+			    numeralPositiveOnly: connector.getState().numeralPositiveOnly,
+			});
+		}
 	} else if (this.getState().formatBlocks) {
-
 		if (connector.getState().delimiters) {
 			new Cleave(el, {
 				blocks: connector.getState().formatBlocks,
