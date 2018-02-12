@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.vaadin.textfieldformatter.CustomStringBlockFormatterUsageDelimitersUI;
+import org.vaadin.textfieldformatter.CustomStringBlockFormatterWithNumericOnlyUsageUI;
 
 import com.vaadin.testbench.elements.TextFieldElement;
 
@@ -24,7 +24,7 @@ public class CustomStringBlockFormatterWithNumericOnlyUsageIT extends AbstractCu
     @Test
 	public void customBlockWithDelimiters() throws InterruptedException {
 
-		openUI(CustomStringBlockFormatterUsageDelimitersUI.class);
+		openUI(CustomStringBlockFormatterWithNumericOnlyUsageUI.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
 		tf.sendKeys("12233k");
 		Assert.assertEquals("1-22-333", tf.getValue());
