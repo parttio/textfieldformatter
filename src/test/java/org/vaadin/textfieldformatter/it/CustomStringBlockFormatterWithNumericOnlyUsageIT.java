@@ -13,7 +13,7 @@ import com.vaadin.testbench.elements.TextFieldElement;
  * BasicJavaSCriptComponentUsageUI. For more complex tests, consider using
  * page object pattern.
  */
-public class CustomStringBlockFormatterUsageIT extends AbstractCustomTestBenchTestCase {
+public class CustomStringBlockFormatterWithNumericOnlyUsageIT extends AbstractCustomTestBenchTestCase {
 
 
 	@Before
@@ -27,6 +27,6 @@ public class CustomStringBlockFormatterUsageIT extends AbstractCustomTestBenchTe
 		openUI(CustomStringBlockFormatterUsageDelimitersUI.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
 		tf.sendKeys("12233k");
-		Assert.assertEquals("1-22-33k", tf.getValue());
+		Assert.assertEquals("1-22-333", tf.getValue());
     }
 }

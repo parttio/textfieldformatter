@@ -4,7 +4,7 @@ import com.vaadin.ui.AbstractTextField;
 
 public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtension {
 
-	public CustomStringBlockFormatter(AbstractTextField field, int[] blocks, String[] delimiters, ForceCase forceCase) {
+	public CustomStringBlockFormatter(AbstractTextField field, int[] blocks, String[] delimiters, ForceCase forceCase, boolean numericOnly) {
 		super(field);
 		getState().formatBlocks = blocks;
 		getState().delimiters = delimiters;
@@ -15,6 +15,11 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 			getState().lowercase = true;
 			getState().uppercase = false;
 		}
+		getState().numericOnly = numericOnly;
+	}
+
+	public CustomStringBlockFormatter(AbstractTextField field, int[] blocks, String[] delimiters, ForceCase forceCase) {
+		this(field, blocks, delimiters, forceCase, false);
 	}
 	
 	public CustomStringBlockFormatter(AbstractTextField field, int[] blocks, ForceCase forceCase) {

@@ -16,4 +16,5 @@ public class TextFieldFormatterState extends JavaScriptExtensionState {
 	public int numeralDecimalScale;
 	public String numeralDecimalMark;
 	public boolean numeralPositiveOnly;
+	public boolean numericOnly = false; // for CustomStringBlockFormatter
 }
