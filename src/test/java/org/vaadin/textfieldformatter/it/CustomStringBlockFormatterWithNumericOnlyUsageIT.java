@@ -27,6 +27,6 @@ public class CustomStringBlockFormatterWithNumericOnlyUsageIT extends AbstractCu
 		openUI(CustomStringBlockFormatterWithNumericOnlyUsageUI.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
 		tf.sendKeys("12233k");
-		Assert.assertEquals("1-22-333", tf.getValue());
+		Assert.assertEquals("1-22-33", tf.getValue());
     }
 }
