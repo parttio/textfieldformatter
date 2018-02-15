@@ -90,8 +90,8 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 	}
 
 	/**
-	 * Adds this extension to a AbstractTextField. Extension cannot be moved to another TextField.
-	 * again.
+	 * Adds this extension to a AbstractTextField. Extension cannot be moved to
+	 * another TextField. again.
 	 */
 	public void extend(AbstractTextField textField) {
 		super.extend(textField);
@@ -124,6 +124,38 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 
 		public Options(int[] blocks) {
 			this(blocks, null, ForceCase.NONE);
+		}
+
+		public int[] getBlocks() {
+			return blocks;
+		}
+
+		public void setBlocks(int[] blocks) {
+			this.blocks = blocks;
+		}
+
+		public String[] getDelimiters() {
+			return delimiters;
+		}
+
+		public void setDelimiters(String[] delimiters) {
+			this.delimiters = delimiters;
+		}
+
+		public ForceCase getForceCase() {
+			return forceCase;
+		}
+
+		public void setForceCase(ForceCase forceCase) {
+			this.forceCase = forceCase;
+		}
+
+		public boolean isNumericOnly() {
+			return numericOnly;
+		}
+
+		public void setNumericOnly(boolean numericOnly) {
+			this.numericOnly = numericOnly;
 		}
 	}
 }
