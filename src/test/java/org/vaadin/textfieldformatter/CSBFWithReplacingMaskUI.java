@@ -11,7 +11,7 @@ import com.vaadin.ui.TextField;
 public class CSBFWithReplacingMaskUI extends AbstractTest {
 
 	public static final String INITIAL_VALUE = "Foo!";
-	
+
 	private final Options formatterA = new Options(new int[] { 1, 2, 3 }, new String[] { "-", "-" }, ForceCase.UPPER);
 	private final Options formatterB = new Options(new int[] { 2, 2 }, new String[] { "*" }, ForceCase.UPPER);
 	private CustomStringBlockFormatter current;
@@ -23,7 +23,7 @@ public class CSBFWithReplacingMaskUI extends AbstractTest {
 		current = new CustomStringBlockFormatter(textField, formatterA);
 		return textField;
 	}
-	
+
 	@Override
 	protected void setup() {
 		super.setup();
@@ -34,7 +34,7 @@ public class CSBFWithReplacingMaskUI extends AbstractTest {
 		toggleButton.setDisableOnClick(true);
 		content.addComponent(toggleButton);
 	}
-	
+
 	private void replaceFormatter(TextField textField, Options options) {
 		if (current != null) {
 			current.remove();

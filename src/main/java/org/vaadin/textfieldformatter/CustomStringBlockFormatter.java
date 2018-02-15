@@ -126,6 +126,10 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 			this(blocks, null, ForceCase.NONE);
 		}
 
+		public Options(Options options) {
+			this(options.blocks, options.delimiters, options.forceCase, options.numericOnly);
+		}
+
 		public int[] getBlocks() {
 			return blocks;
 		}
