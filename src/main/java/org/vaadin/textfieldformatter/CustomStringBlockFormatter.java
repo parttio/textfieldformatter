@@ -134,7 +134,7 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 			return blocks;
 		}
 
-		public void setBlocks(int[] blocks) {
+		public void setBlocks(int... blocks) {
 			this.blocks = blocks;
 		}
 
@@ -142,7 +142,7 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 			return delimiters;
 		}
 
-		public void setDelimiters(String[] delimiters) {
+		public void setDelimiters(String... delimiters) {
 			this.delimiters = delimiters;
 		}
 
