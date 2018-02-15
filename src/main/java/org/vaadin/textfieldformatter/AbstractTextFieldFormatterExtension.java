@@ -14,7 +14,10 @@ public abstract class AbstractTextFieldFormatterExtension extends AbstractJavaSc
 	public AbstractTextFieldFormatterExtension(AbstractTextField field) {
 		extend(field);
 	}
-	
+
+	public AbstractTextFieldFormatterExtension() {
+	}
+
 	@Override
 	protected TextFieldFormatterState getState() {
 		return (TextFieldFormatterState) super.getState();
