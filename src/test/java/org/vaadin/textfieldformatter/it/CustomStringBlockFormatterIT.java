@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.vaadin.textfieldformatter.CSBFDelimitersUI;
-import org.vaadin.textfieldformatter.CSBFNumericAndPrefixUI;
 import org.vaadin.textfieldformatter.CSBFNumericOnlyUI;
 import org.vaadin.textfieldformatter.CSBFReplacingMaskUI;
 
