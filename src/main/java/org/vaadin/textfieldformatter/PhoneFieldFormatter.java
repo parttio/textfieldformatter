@@ -1,13 +1,26 @@
 package org.vaadin.textfieldformatter;
 
+import com.vaadin.annotations.JavaScript;
+import com.vaadin.server.AbstractJavaScriptExtension;
 import com.vaadin.ui.AbstractTextField;
 
-public class PhoneFieldFormatter extends AbstractTextFieldFormatterExtension {
+@JavaScript({ "cleave.min.js", "cleave-phone.i18n.js", "phone_connector.js" })
+public class PhoneFieldFormatter extends AbstractJavaScriptExtension {
 
-	public PhoneFieldFormatter(AbstractTextField field, String phoneRegionCode) {
-		super(field);
-		getState().formatPhone = true;
+	public PhoneFieldFormatter(String phoneRegionCode) {
 		getState().phoneRegionCode = phoneRegionCode;
 	}
-	
+
+	@Override
+	protected PhoneFieldFormatterState getState() {
+		return (PhoneFieldFormatterState) super.getState();
+	}
+
+	/**
+	 * Adds this extension to a AbstractTextField. Extension cannot be moved to
+	 * another TextField again.
+	 */
+	public void extend(AbstractTextField textField) {
+		super.extend(textField);
+	}
 }

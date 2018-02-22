@@ -48,7 +48,7 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 
 	/**
 	 * Adds this extension to a AbstractTextField. Extension cannot be moved to
-	 * another TextField. again.
+	 * another TextField again.
 	 */
 	public void extend(AbstractTextField textField) {
 		super.extend(textField);
