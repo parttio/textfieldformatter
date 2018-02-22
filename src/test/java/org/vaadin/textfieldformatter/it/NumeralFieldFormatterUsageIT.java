@@ -3,7 +3,7 @@ package org.vaadin.textfieldformatter.it;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.vaadin.textfieldformatter.CustomNumeralFieldFormatterUsageUI;
 import org.vaadin.textfieldformatter.DefaultNumeralFieldFormatterUsageUI;
 
@@ -13,7 +13,7 @@ public class NumeralFieldFormatterUsageIT extends AbstractCustomTestBenchTestCas
 
 	@Before
 	public void init() {
-		startBrowser(new PhantomJSDriver());
+		startBrowser(new ChromeDriver());
 	}
 
 	@Test

@@ -3,7 +3,7 @@ package org.vaadin.textfieldformatter.it;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.vaadin.textfieldformatter.BasicPhoneFieldFormatterUsageUI;
 
 import com.vaadin.testbench.elements.TextFieldElement;
@@ -18,7 +18,7 @@ public class BasicPhoneFieldFormatterUsageIT extends AbstractCustomTestBenchTest
 
 	@Before
 	public void init() {
-		startBrowser(new PhantomJSDriver());
+		startBrowser(new ChromeDriver());
 	}
 
     @Test

@@ -1,6 +1,7 @@
 package org.vaadin.textfieldformatter.it;
 
 import org.eclipse.jetty.server.Server;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
@@ -53,5 +54,10 @@ public abstract class AbstractCustomTestBenchTestCase extends TestBenchTestCase 
 
 	protected <T extends AbstractTest> void openUI(Class<T> testClass) {
 		driver.navigate().to(BASEURL + testClass.getName());
+	}
+
+	@After
+	public void teardown() {
+		driver.quit();
 	}
 }

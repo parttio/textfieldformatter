@@ -6,7 +6,7 @@ import org.vaadin.textfieldformatter.CustomStringBlockFormatter.ForceCase;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.TextField;
 
-public class CustomStringBlockFormatterWithNumericOnlyUsageUI extends AbstractTest {
+public class CSBFNumericOnlyUI extends AbstractTest {
 
 	public static final String INITIAL_VALUE = "Foo!";
 

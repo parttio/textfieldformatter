@@ -8,7 +8,7 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.TextField;
 
-public class CSBFWithReplacingMaskUI extends AbstractTest {
+public class CSBFReplacingMaskUI extends AbstractTest {
 
 	public static final String INITIAL_VALUE = "Foo!";
 

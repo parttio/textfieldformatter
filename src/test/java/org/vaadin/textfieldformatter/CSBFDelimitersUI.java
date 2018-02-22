@@ -6,7 +6,7 @@ import org.vaadin.textfieldformatter.CustomStringBlockFormatter.ForceCase;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.TextField;
 
-public class CustomStringBlockFormatterUsageDelimitersUI extends AbstractTest {
+public class CSBFDelimitersUI extends AbstractTest {
 
 	public static final String INITIAL_VALUE = "Foo!";
 

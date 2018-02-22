@@ -1,4 +1,19 @@
 language: java
 jdk:
   - oraclejdk8
+
+before_install:
+ - export CHROME_BIN=/usr/bin/google-chrome
+ - export DISPLAY=:99.0
+ - sh -e /etc/init.d/xvfb start
+# (https://github.com/SeleniumHQ/docker-selenium/issues/87)
+ - export DBUS_SESSION_BUS_ADDRESS=/dev/null
+
+addons:
+  apt:
+    sources:
+     - google-chrome
+    packages:
+     - google-chrome-stable
+
 script: sh ./.travis.script.sh
