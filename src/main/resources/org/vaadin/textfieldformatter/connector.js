@@ -46,22 +46,16 @@ window.org_vaadin_textfieldformatter_AbstractTextFieldFormatterExtension = funct
                     delimiters: connector.getState().delimiters,
                     uppercase: connector.getState().uppercase,
                     lowercase: connector.getState().lowercase,
-                    numericOnly: connector.getState().numericOnly
-                });
-            } else if (connector.getState().delimiter) {
-                this.cleave = new Cleave(el, {
-                    blocks: connector.getState().formatBlocks,
-                    delimiter: connector.getState().delimiter,
-                    uppercase: connector.getState().uppercase,
-                    lowercase: connector.getState().lowercase,
-                    numericOnly: connector.getState().numericOnly
+                    numericOnly: connector.getState().numericOnly,
+                    prefix: connector.getState().prefix
                 });
             } else {
                 this.cleave = new Cleave(el, {
                     blocks: connector.getState().formatBlocks,
                     uppercase: connector.getState().uppercase,
                     lowercase: connector.getState().lowercase,
-                    numericOnly: connector.getState().numericOnly
+                    numericOnly: connector.getState().numericOnly,
+                    prefix: connector.getState().prefix
                 });
             }
         }

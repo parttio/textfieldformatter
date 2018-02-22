@@ -20,11 +20,13 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 	 *            ForceCase.NONE don't touch letter case. ForceCase.LOWER transform
 	 *            characters to lower case. ForceCase.UPPER transform characters to
 	 *            upper case.
+	 * @param prefix
+	 *            String prefix for the input
 	 * @param numericOnly
 	 *            true for allowing numeric characters only. Defaults to false.
 	 */
 	public CustomStringBlockFormatter(AbstractTextField field, int[] blocks, String[] delimiters, ForceCase forceCase,
-			boolean numericOnly) {
+			String prefix, boolean numericOnly) {
 		super(field);
 		getState().formatBlocks = blocks;
 		getState().delimiters = delimiters;
@@ -35,7 +37,13 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 			getState().lowercase = true;
 			getState().uppercase = false;
 		}
+		getState().prefix = prefix;
 		getState().numericOnly = numericOnly;
+	}
+
+	public CustomStringBlockFormatter(AbstractTextField field, int[] blocks, String[] delimiters, ForceCase forceCase,
+			boolean numericOnly) {
+		this(field, blocks, delimiters, forceCase, null, numericOnly);
 	}
 
 	/**
@@ -53,10 +61,13 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 	 *            ForceCase.NONE don't touch letter case. ForceCase.LOWER transform
 	 *            characters to lower case. ForceCase.UPPER transform characters to
 	 *            upper case.
+	 * @param prefix
+	 *            String prefix for the input
 	 * @param numericOnly
 	 *            true for allowing numeric characters only. Defaults to false.
 	 */
-	public CustomStringBlockFormatter(int[] blocks, String[] delimiters, ForceCase forceCase, boolean numericOnly) {
+	public CustomStringBlockFormatter(int[] blocks, String[] delimiters, ForceCase forceCase, String prefix,
+			boolean numericOnly) {
 		getState().formatBlocks = blocks;
 		getState().delimiters = delimiters;
 		if (forceCase == ForceCase.UPPER) {
@@ -66,7 +77,12 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 			getState().lowercase = true;
 			getState().uppercase = false;
 		}
+		getState().prefix = prefix;
 		getState().numericOnly = numericOnly;
+	}
+
+	public CustomStringBlockFormatter(int[] blocks, String[] delimiters, ForceCase forceCase, boolean numericOnly) {
+		this(blocks, delimiters, forceCase, null, numericOnly);
 	}
 
 	public CustomStringBlockFormatter(AbstractTextField field, int[] blocks, String[] delimiters, ForceCase forceCase) {
@@ -106,12 +122,18 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 		private String[] delimiters = null;
 		private ForceCase forceCase = ForceCase.NONE;
 		private boolean numericOnly = false;
+		private String prefix;
 
-		public Options(int[] blocks, String[] delimiters, ForceCase forceCase, boolean numericOnly) {
+		public Options(int[] blocks, String[] delimiters, ForceCase forceCase, String prefix, boolean numericOnly) {
 			this.blocks = blocks;
 			this.delimiters = delimiters;
 			this.forceCase = forceCase;
+			this.prefix = prefix;
 			this.numericOnly = numericOnly;
+		}
+
+		public Options(int[] blocks, String[] delimiters, ForceCase forceCase, boolean numericOnly) {
+			this(blocks, delimiters, forceCase, null, numericOnly);
 		}
 
 		public Options(int[] blocks, String[] delimiters, ForceCase forceCase) {
@@ -127,7 +149,11 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 		}
 
 		public Options(Options options) {
-			this(options.blocks, options.delimiters, options.forceCase, options.numericOnly);
+			this(options.blocks, options.delimiters, options.forceCase, options.prefix, options.numericOnly);
+		}
+
+		public Options() {
+
 		}
 
 		public int[] getBlocks() {
@@ -152,6 +178,14 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 
 		public void setForceCase(ForceCase forceCase) {
 			this.forceCase = forceCase;
+		}
+
+		public String getPrefix() {
+			return prefix;
+		}
+
+		public void setPrefix(String prefix) {
+			this.prefix = prefix;
 		}
 
 		public boolean isNumericOnly() {
