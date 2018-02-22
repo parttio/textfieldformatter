@@ -1,5 +1,7 @@
 package org.vaadin.textfieldformatter;
 
+import java.util.ArrayList;
+
 import com.vaadin.ui.AbstractTextField;
 
 public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtension {
@@ -117,6 +119,132 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 
 	public enum ForceCase {
 		NONE, UPPER, LOWER
+	}
+
+	public static class Builder {
+		private String prefix;
+		private ForceCase _case;
+		private boolean numeric;
+		private final ArrayList<String> delimiters = new ArrayList<>();
+		private final ArrayList<Integer> blocks = new ArrayList<>();
+
+		public Builder() {
+
+		}
+
+		/**
+		 * Creates prefix as the first block and delimiter. This will replaced
+		 * previously set prefix block. This will prepend any previously set normal
+		 * blocks.
+		 * 
+		 * @param prefix
+		 *            String prefix to use. Cannot be null or empty.
+		 * @param delimiter
+		 *            String delimiter after the prefix block. Cannot be null or empty.
+		 * @return this Builder
+		 */
+		public Builder prefix(String prefix, String delimiter) {
+			if (prefix == null || prefix.isEmpty())
+				throw new IllegalArgumentException("Prefix cannot be null or empty.");
+			if (delimiter == null || delimiter.isEmpty())
+				throw new IllegalArgumentException("Delimiter cannot be null or empty.");
+			this.prefix = prefix;
+			blocks.add(0, prefix.length());
+			delimiters.add(0, delimiter);
+			return this;
+		}
+
+		/**
+		 * Appends a block with a given block length and delimiter character. If this is
+		 * the last block, the delimiter will be ignored.
+		 * 
+		 * @param blockLength
+		 *            int block length
+		 * @param delimiter
+		 *            String delimiter after block. Cannot be null or empty.
+		 * @return this Builder
+		 */
+		public Builder block(int blockLength, String delimiter) {
+			if (delimiter == null || delimiter.isEmpty())
+				throw new IllegalArgumentException("Delimiter cannot be null or empty.");
+			blocks.add(blockLength);
+			delimiters.add(delimiter);
+			return this;
+		}
+
+		/**
+		 * Appends the blocks with a given block lengths.
+		 * 
+		 * @param blockLengths
+		 *            int[] block lengths
+		 * @return this Builder
+		 */
+		public Builder blocks(int... blockLengths) {
+			if (blockLengths == null)
+				throw new IllegalArgumentException("Block lengths cannot be null.");
+			for (int block : blockLengths) {
+				blocks.add(block);
+			}
+			return this;
+		}
+
+		/**
+		 * Appends the blocks with a given block lengths.
+		 * 
+		 * @param delimiters
+		 *            String[] delimiters to be used. Cannot be null.
+		 * @return this Builder
+		 */
+		public Builder delimiters(String... delimiters) {
+			if (delimiters == null)
+				throw new IllegalArgumentException("Delimiters cannot be null.");
+			for (String delimiter : delimiters) {
+				this.delimiters.add(delimiter);
+			}
+			return this;
+		}
+
+		/**
+		 * Allows only numeric characters. Default is allowing any character.
+		 * 
+		 * @return this Builder
+		 */
+		public Builder numeric() {
+			numeric = true;
+			return this;
+		}
+
+		/**
+		 * Sets the forced letter casing of characters.
+		 * 
+		 * @param _case
+		 *            enumeration to control letter case of characters. ForceCase.NONE
+		 *            don't touch letter case. ForceCase.LOWER transform characters to
+		 *            lower case. ForceCase.UPPER transform characters to upper case.
+		 * @return this Builder
+		 */
+		public Builder forceCase(ForceCase _case) {
+			this._case = _case;
+			return this;
+		}
+
+		public CustomStringBlockFormatter build() {
+			return new CustomStringBlockFormatter(buildOptions());
+		}
+
+		public Options buildOptions() {
+			Options options = new Options();
+			options.setForceCase(_case);
+			options.setNumericOnly(numeric);
+			options.setPrefix(prefix);
+			if (!blocks.isEmpty() && !delimiters.isEmpty()) {
+				options.setBlocks(blocks.stream().mapToInt(Integer::valueOf).toArray());
+				delimiters.stream().limit(delimiters.size() - 1).toArray();
+				options.setDelimiters(
+						delimiters.subList(0, delimiters.size() - 1).toArray(new String[delimiters.size() - 1]));
+			}
+			return options;
+		}
 	}
 
 	public static class Options {

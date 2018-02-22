@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.vaadin.textfieldformatter.CSBFDelimitersUI;
 import org.vaadin.textfieldformatter.CSBFNumericAndPrefixUI;
 import org.vaadin.textfieldformatter.CSBFNumericAndPrefixWithBlocksUI;
+import org.vaadin.textfieldformatter.CSBFNumericAndPrefixWithBuilderUI;
 import org.vaadin.textfieldformatter.CSBFNumericOnlyUI;
 import org.vaadin.textfieldformatter.CSBFReplacingMaskUI;
 
@@ -51,6 +52,15 @@ public class CustomStringBlockFormatterIT extends AbstractCustomTestBenchTestCas
 	@Test
 	public void customBlocksWithNumericAndPrefixBlocks() throws InterruptedException {
 		openUI(CSBFNumericAndPrefixWithBlocksUI.class);
+		TextFieldElement tf = $(TextFieldElement.class).first();
+		Assert.assertEquals("PREFIX: ", tf.getValue());
+		tf.sendKeys("1234bbbbb");
+		Assert.assertEquals("PREFIX: 1-23-4", tf.getValue());
+	}
+
+	@Test
+	public void customBlocksWithNumericAndPrefixWithBuilder() throws InterruptedException {
+		openUI(CSBFNumericAndPrefixWithBuilderUI.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
 		Assert.assertEquals("PREFIX: ", tf.getValue());
 		tf.sendKeys("1234bbbbb");
