@@ -1,9 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.vaadin</groupId>
     <artifactId>textfieldformatter</artifactId>
-    <version>1.6-SNAPSHOT</version>
+    <version>1.6</version>
     <name>TextField Formatter</name>
     <packaging>bundle</packaging>
     <organization>
@@ -28,7 +27,7 @@
         <url>https://github.com/${github.account}/${github.project}</url>
         <connection>scm:git:git://github.com/${github.account}/${github.project}.git</connection>
         <developerConnection>scm:git:ssh://git@github-VAADIN:/${github.account}/${github.project}.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>textfieldformatter-1.6</tag>
     </scm>
     <issueManagement>
         <system>GitHub</system>
