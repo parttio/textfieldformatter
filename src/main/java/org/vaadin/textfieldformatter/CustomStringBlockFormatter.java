@@ -98,11 +98,11 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 	}
 
 	public CustomStringBlockFormatter(AbstractTextField field, Options options) {
-		this(field, options.blocks, options.delimiters, options.forceCase, options.numericOnly);
+		this(field, options.blocks, options.delimiters, options.forceCase, options.prefix, options.numericOnly);
 	}
 
 	public CustomStringBlockFormatter(Options options) {
-		this(options.blocks, options.delimiters, options.forceCase, options.numericOnly);
+		this(options.blocks, options.delimiters, options.forceCase, options.prefix, options.numericOnly);
 	}
 
 	/**
