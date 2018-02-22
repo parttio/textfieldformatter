@@ -13,7 +13,7 @@ public class CSBFDelimitersUI extends AbstractTest {
 	@Override
 	public Component getTestComponent() {
 		TextField tf = new TextField();
-		new CustomStringBlockFormatter(tf, new int[] { 1, 2, 3 }, new String[] { "-", "-" }, ForceCase.NONE);
+		new CustomStringBlockFormatter(new int[] { 1, 2, 3 }, new String[] { "-", "-" }, ForceCase.NONE, null, false).extend(tf);
 		return tf;
 	}
 }

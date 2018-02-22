@@ -13,7 +13,7 @@ public class CSBFNumericOnlyUI extends AbstractTest {
 	@Override
 	public Component getTestComponent() {
 		TextField tf = new TextField();
-		new CustomStringBlockFormatter(tf, new int[] { 1, 2, 3 }, new String[] { "-", "-" }, ForceCase.NONE, true);
+		new CustomStringBlockFormatter(new int[] { 1, 2, 3 }, new String[] { "-", "-" }, ForceCase.NONE, null, true).extend(tf);
 		return tf;
 	}
 }

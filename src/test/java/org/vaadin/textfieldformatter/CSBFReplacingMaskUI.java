@@ -12,15 +12,16 @@ public class CSBFReplacingMaskUI extends AbstractTest {
 
 	public static final String INITIAL_VALUE = "Foo!";
 
-	private final Options formatterA = new Options(new int[] { 1, 2, 3 }, new String[] { "-", "-" }, ForceCase.UPPER);
-	private final Options formatterB = new Options(new int[] { 2, 2 }, new String[] { "*" }, ForceCase.UPPER);
+	private final Options formatterA = new Options(new int[] { 1, 2, 3 }, new String[] { "-", "-" }, ForceCase.UPPER, null, false);
+	private final Options formatterB = new Options(new int[] { 2, 2 }, new String[] { "*" }, ForceCase.UPPER, null, false);
 	private CustomStringBlockFormatter current;
 	private TextField textField;
 
 	@Override
 	public Component getTestComponent() {
 		textField = new TextField();
-		current = new CustomStringBlockFormatter(textField, formatterA);
+		current = new CustomStringBlockFormatter(formatterA);
+		current.extend(textField);
 		return textField;
 	}
 
@@ -39,6 +40,7 @@ public class CSBFReplacingMaskUI extends AbstractTest {
 		if (current != null) {
 			current.remove();
 		}
-		current = new CustomStringBlockFormatter(textField, options);
+		current = new CustomStringBlockFormatter(options);
+		current.extend(textField);
 	}
 }

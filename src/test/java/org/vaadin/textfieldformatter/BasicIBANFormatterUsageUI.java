@@ -13,7 +13,7 @@ public class BasicIBANFormatterUsageUI extends AbstractTest {
     @Override
     public Component getTestComponent() {
         TextField tf = new TextField();
-        IBANFormatter.fromIBANLength(tf, 18);
+        IBANFormatter.fromIBANLength(18).extend(tf);
         tf.addValueChangeListener(l -> Notification.show("Value: " + l.getValue()));
         return tf;
     }
