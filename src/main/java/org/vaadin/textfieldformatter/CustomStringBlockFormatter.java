@@ -28,6 +28,7 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 	public CustomStringBlockFormatter(AbstractTextField field, int[] blocks, String[] delimiters, ForceCase forceCase,
 			String prefix, boolean numericOnly) {
 		super(field);
+		getState().csbf = true;
 		getState().formatBlocks = blocks;
 		getState().delimiters = delimiters;
 		if (forceCase == ForceCase.UPPER) {
@@ -68,6 +69,7 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 	 */
 	public CustomStringBlockFormatter(int[] blocks, String[] delimiters, ForceCase forceCase, String prefix,
 			boolean numericOnly) {
+		getState().csbf = true;
 		getState().formatBlocks = blocks;
 		getState().delimiters = delimiters;
 		if (forceCase == ForceCase.UPPER) {

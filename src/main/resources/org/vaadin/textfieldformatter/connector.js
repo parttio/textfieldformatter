@@ -39,7 +39,7 @@ window.org_vaadin_textfieldformatter_AbstractTextFieldFormatterExtension = funct
                     numeralPositiveOnly: connector.getState().numeralPositiveOnly,
                 });
             }
-        } else if (this.getState().formatBlocks) {
+        } else if (this.getState().csbf) {
             if (connector.getState().delimiters) {
                 this.cleave = new Cleave(el, {
                     blocks: connector.getState().formatBlocks,
