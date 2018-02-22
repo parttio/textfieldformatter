@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.vaadin</groupId>
     <artifactId>textfieldformatter</artifactId>
@@ -27,8 +28,8 @@
         <url>https://github.com/${github.account}/${github.project}</url>
         <connection>scm:git:git://github.com/${github.account}/${github.project}.git</connection>
         <developerConnection>scm:git:ssh://git@github-VAADIN:/${github.account}/${github.project}.git</developerConnection>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/${github.account}/${github.project}/issues</url>
@@ -77,7 +78,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-   <repositories>
+    <repositories>
         <repository>
             <id>vaadin-addons</id>
             <url>http://maven.vaadin.com/vaadin-addons</url>
@@ -117,8 +118,8 @@
                 </executions>
             </plugin>
             <plugin>
-                <!-- Skip deployment as we expect the artifact to be manually
-                deployed to vaadin.com/directory -->
+                <!-- Skip deployment as we expect the artifact to be manually deployed
+                    to vaadin.com/directory -->
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.2</version>
                 <configuration>
@@ -179,10 +180,8 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <!-- build javadocs during development builds as well to
-                     show javadoc syntax issues before release. Remove this
-                     to speed up the build a bit.
-                    -->
+                    <!-- build javadocs during development builds as well to show javadoc
+                        syntax issues before release. Remove this to speed up the build a bit. -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
@@ -214,6 +213,26 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>com.github.webdriverextensions</groupId>
+                        <artifactId>webdriverextensions-maven-plugin</artifactId>
+                        <version>3.1.1</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>install-drivers</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <drivers>
+                                <driver>
+                                    <name>chromedriver</name>
+                                    <version>2.35</version>
+                                </driver>
+                            </drivers>
+                        </configuration>
+                    </plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <version>2.19.1</version>
@@ -222,31 +241,6 @@
                                 <goals>
                                     <goal>integration-test</goal>
                                     <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <trimStackTrace>false</trimStackTrace>
-                            <systemPropertyVariables>
-                                <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>com.lazerycode.selenium</groupId>
-                        <artifactId>driver-binary-downloader-maven-plugin</artifactId>
-                        <version>1.0.12</version>
-                        <configuration>
-                            <!-- root directory that downloaded driver binaries will be stored
-                                in -->
-                            <onlyGetDriversForHostOperatingSystem>true</onlyGetDriversForHostOperatingSystem>
-                            <rootStandaloneServerDirectory>.driver</rootStandaloneServerDirectory>
-                            <customRepositoryMap>webdrivers.xml</customRepositoryMap>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>selenium</goal>
                                 </goals>
                             </execution>
                         </executions>
@@ -264,6 +258,26 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>com.github.webdriverextensions</groupId>
+                        <artifactId>webdriverextensions-maven-plugin</artifactId>
+                        <version>3.1.1</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>install-drivers</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <drivers>
+                                <driver>
+                                    <name>chromedriver</name>
+                                    <version>2.35</version>
+                                </driver>
+                            </drivers>
+                        </configuration>
+                    </plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <version>2.19.1</version>
@@ -272,31 +286,6 @@
                                 <goals>
                                     <goal>integration-test</goal>
                                     <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <trimStackTrace>false</trimStackTrace>
-                            <systemPropertyVariables>
-                                <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>com.lazerycode.selenium</groupId>
-                        <artifactId>driver-binary-downloader-maven-plugin</artifactId>
-                        <version>1.0.12</version>
-                        <configuration>
-                            <!-- root directory that downloaded driver binaries will be stored
-                                in -->
-                            <onlyGetDriversForHostOperatingSystem>true</onlyGetDriversForHostOperatingSystem>
-                            <rootStandaloneServerDirectory>.driver</rootStandaloneServerDirectory>
-                            <customRepositoryMap>webdrivers.xml</customRepositoryMap>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>selenium</goal>
                                 </goals>
                             </execution>
                         </executions>

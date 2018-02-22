@@ -3,7 +3,6 @@ package org.vaadin.textfieldformatter.it;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.vaadin.textfieldformatter.CSBFDelimitersUI;
 import org.vaadin.textfieldformatter.CSBFNumericOnlyUI;
 import org.vaadin.textfieldformatter.CSBFReplacingMaskUI;
@@ -15,7 +14,7 @@ public class CustomStringBlockFormatterIT extends AbstractCustomTestBenchTestCas
 
 	@Before
 	public void init() {
-		startBrowser(new ChromeDriver());
+		startBrowser(createHeadlessChromeDriver());
 	}
 
 	@Test

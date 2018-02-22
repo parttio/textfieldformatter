@@ -5,6 +5,8 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.vaadin.addonhelpers.AbstractTest;
 import org.vaadin.addonhelpers.TServer;
 
@@ -54,6 +56,12 @@ public abstract class AbstractCustomTestBenchTestCase extends TestBenchTestCase 
 
 	protected <T extends AbstractTest> void openUI(Class<T> testClass) {
 		driver.navigate().to(BASEURL + testClass.getName());
+	}
+
+	public static ChromeDriver createHeadlessChromeDriver() {
+		ChromeOptions options = new ChromeOptions();
+		options.setHeadless(true);
+		return new ChromeDriver(options);
 	}
 
 	@After

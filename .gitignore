@@ -2,6 +2,5 @@
 .project
 target
 .classpath
-.driver
-selenium_standalone_zips
+drivers
 *.log
