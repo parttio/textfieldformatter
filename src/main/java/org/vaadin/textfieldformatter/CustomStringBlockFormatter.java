@@ -6,8 +6,8 @@ import com.vaadin.annotations.JavaScript;
 import com.vaadin.server.AbstractJavaScriptExtension;
 import com.vaadin.ui.AbstractTextField;
 
-@JavaScript({ "cleave.min.js", "connector.js" })
-public class CustomStringBlockFormatter extends AbstractJavaScriptExtension {
+@JavaScript({ "connector.js" })
+public class CustomStringBlockFormatter extends CleaveExtension {
 
 	/**
 	 * Creates an instance of CustomStringBlockFormatter. Call extend to attach this

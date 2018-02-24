@@ -4,8 +4,8 @@ import com.vaadin.annotations.JavaScript;
 import com.vaadin.server.AbstractJavaScriptExtension;
 import com.vaadin.ui.AbstractTextField;
 
-@JavaScript({ "cleave.min.js", "numeral_connector.js" })
-public class NumeralFieldFormatter extends AbstractJavaScriptExtension {
+@JavaScript({ "numeral_connector.js" })
+public class NumeralFieldFormatter extends CleaveExtension {
 	public static String DEFAULT_DELIMITER = ",";
 	public static int DEFAULT_DECIMAL_SCALE = 2;
 	public static String DEFAULT_DECIMAL_MARK = ".";

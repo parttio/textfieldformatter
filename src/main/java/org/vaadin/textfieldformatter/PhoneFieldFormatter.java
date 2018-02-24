@@ -4,8 +4,8 @@ import com.vaadin.annotations.JavaScript;
 import com.vaadin.server.AbstractJavaScriptExtension;
 import com.vaadin.ui.AbstractTextField;
 
-@JavaScript({ "cleave.min.js", "cleave-phone.i18n.js", "phone_connector.js" })
-public class PhoneFieldFormatter extends AbstractJavaScriptExtension {
+@JavaScript({ "cleave-phone.i18n.js", "phone_connector.js" })
+public class PhoneFieldFormatter extends CleaveExtension {
 
 	public PhoneFieldFormatter(String phoneRegionCode) {
 		getState().phoneRegionCode = phoneRegionCode;

@@ -9,8 +9,8 @@ import com.vaadin.ui.AbstractTextField;
 
 import elemental.json.JsonArray;
 
-@JavaScript({ "cleave.min.js", "cc_connector.js" })
-public class CreditCardFieldFormatter extends AbstractJavaScriptExtension {
+@JavaScript({ "cc_connector.js" })
+public class CreditCardFieldFormatter extends CleaveExtension {
 
 	private final List<CreditCardChangedListener> listeners = new ArrayList<>();
 
