@@ -1,6 +1,6 @@
 ''
 
-window.org_vaadin_textfieldformatter_NumeralFieldFormatterExtension = function() {
+window.org_vaadin_textfieldformatter_NumeralFieldFormatter = function() {
 
     var el = this.getElement(this.getParentId());
     var connector = this;

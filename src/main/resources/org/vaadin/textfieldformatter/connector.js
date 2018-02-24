@@ -1,6 +1,6 @@
 ''
 
-window.org_vaadin_textfieldformatter_CustomStringBlockFormatterExtension = function() {
+window.org_vaadin_textfieldformatter_CustomStringBlockFormatter = function() {
 
     var el = this.getElement(this.getParentId());
     var connector = this;
