@@ -17,8 +17,11 @@ public class PhoneFieldFormatter extends CleaveExtension {
 	}
 
 	/**
-	 * Adds this extension to a AbstractTextField. Extension cannot be moved to
+	 * Attaches this extension to a TextField. Extension cannot be moved to
 	 * another TextField again.
+	 * 
+	 * @param textField
+	 *            TextField to attach this extension to
 	 */
 	public void extend(AbstractTextField textField) {
 		super.extend(textField);

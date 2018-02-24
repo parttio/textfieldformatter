@@ -3,7 +3,6 @@ package org.vaadin.textfieldformatter;
 import java.util.ArrayList;
 
 import com.vaadin.annotations.JavaScript;
-import com.vaadin.server.AbstractJavaScriptExtension;
 import com.vaadin.ui.AbstractTextField;
 
 @JavaScript({ "connector.js" })
@@ -54,8 +53,11 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 	}
 
 	/**
-	 * Adds this extension to a AbstractTextField. Extension cannot be moved to
+	 * Adds this extension to a TextField. Extension cannot be moved to
 	 * another TextField again.
+	 * 
+	 * @param textField
+	 *            TextField to attach this extension to
 	 */
 	public void extend(AbstractTextField textField) {
 		super.extend(textField);

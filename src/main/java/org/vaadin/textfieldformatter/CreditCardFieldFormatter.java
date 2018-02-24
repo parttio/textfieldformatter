@@ -32,6 +32,13 @@ public class CreditCardFieldFormatter extends CleaveExtension {
 		return (CreditCardFieldFormatterState) super.getState(markAsDirty);
 	}
 
+	/**
+	 * Adds this extension to a TextField. Extension cannot be moved to
+	 * another TextField again.
+	 * 
+	 * @param textField
+	 *            TextField to attach this extension to
+	 */
 	public void extend(AbstractTextField textField) {
 		super.extend(textField);
 	}

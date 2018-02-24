@@ -14,8 +14,6 @@ public class NumeralFieldFormatter extends CleaveExtension {
 	/**
 	 * Creates a TextFieldFormatter for numeral fields. By default has delimiter ','
 	 * and decimal mark '.'. Integer scale is not limited and shows 2 decimals.
-	 *
-	 * @param field
 	 */
 	public NumeralFieldFormatter() {
 		this(DEFAULT_DELIMITER, DEFAULT_DECIMAL_MARK, UNDEFINED_INTEGER_SCALE, DEFAULT_DECIMAL_SCALE, false);
@@ -28,8 +26,6 @@ public class NumeralFieldFormatter extends CleaveExtension {
 	/**
 	 * Creates a field formatter for numeral fields.
 	 *
-	 * @param field
-	 *            TextField to be extended
 	 * @param delimiter
 	 *            Delimiter for integer groups
 	 * @param decimalMark
@@ -58,6 +54,13 @@ public class NumeralFieldFormatter extends CleaveExtension {
 		return (NumeralFieldFormatterState) super.getState();
 	}
 
+	/**
+	 * Attaches this extension to a TextField. Extension cannot be moved to
+	 * another TextField again.
+	 * 
+	 * @param textField
+	 *            TextField to attach this extension to
+	 */
 	public void extend(AbstractTextField textField) {
 		super.extend(textField);
 	}
