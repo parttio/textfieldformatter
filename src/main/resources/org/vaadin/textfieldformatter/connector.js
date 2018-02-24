@@ -8,14 +8,7 @@ window.org_vaadin_textfieldformatter_AbstractTextFieldFormatterExtension = funct
 
     this.onStateChange = function(e) {
 
-        if (this.getState().formatCreditCard) {
-            this.cleave = new Cleave(el, {
-                creditCard: true,
-                onCreditCardTypeChanged: function(type) {
-                    connector.onCreditCardChanged(type);
-                }
-            });
-        } else if (this.getState().formatNumeral) {
+        if (this.getState().formatNumeral) {
             if (connector.getState().numeralIntegerScale) {
                 this.cleave = new Cleave(el, {
                     numeral: true,

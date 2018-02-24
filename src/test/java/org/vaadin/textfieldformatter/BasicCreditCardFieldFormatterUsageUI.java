@@ -13,7 +13,8 @@ public class BasicCreditCardFieldFormatterUsageUI extends AbstractTest {
 	@Override
 	public Component getTestComponent() {
 		TextField tf = new TextField();
-		CreditCardFieldFormatter formatter = new CreditCardFieldFormatter(tf);
+		CreditCardFieldFormatter formatter = new CreditCardFieldFormatter();
+		formatter.extend(tf);
 		formatter.addCreditCardChangedListener(l -> Notification.show("Card type: " + l.getCreditCardType()));
 		return tf;
 	}
