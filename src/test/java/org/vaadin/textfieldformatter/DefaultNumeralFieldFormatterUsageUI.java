@@ -11,7 +11,7 @@ public class DefaultNumeralFieldFormatterUsageUI extends AbstractTest {
 	@Override
 	public Component getTestComponent() {
 		TextField tf = new TextField();
-		new NumeralFieldFormatter(tf);
+		new NumeralFieldFormatter().extend(tf);
 		tf.addValueChangeListener(l -> Notification.show("Value: " + l.getValue()));
 		return tf;
 	}

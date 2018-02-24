@@ -11,7 +11,7 @@ public class CustomNumeralFieldFormatterUsageUI extends AbstractTest {
 	@Override
 	public Component getTestComponent() {
 		TextField tf = new TextField();
-		new NumeralFieldFormatter(tf, ".", ",", -1, 3, true);
+		new NumeralFieldFormatter(".", ",", -1, 3, true).extend(tf);
 		tf.addValueChangeListener(l -> Notification.show("Value: " + l.getValue()));
 		return tf;
 	}

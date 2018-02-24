@@ -2,9 +2,12 @@ package org.vaadin.textfieldformatter;
 
 import java.util.ArrayList;
 
+import com.vaadin.annotations.JavaScript;
+import com.vaadin.server.AbstractJavaScriptExtension;
 import com.vaadin.ui.AbstractTextField;
 
-public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtension {
+@JavaScript({ "cleave.min.js", "connector.js" })
+public class CustomStringBlockFormatter extends AbstractJavaScriptExtension {
 
 	/**
 	 * Creates an instance of CustomStringBlockFormatter. Call extend to attach this
@@ -28,7 +31,6 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 	 */
 	public CustomStringBlockFormatter(int[] blocks, String[] delimiters, ForceCase forceCase, String prefix,
 			boolean numericOnly) {
-		getState().csbf = true;
 		getState().formatBlocks = blocks;
 		getState().delimiters = delimiters;
 		if (forceCase == ForceCase.UPPER) {
@@ -44,6 +46,11 @@ public class CustomStringBlockFormatter extends AbstractTextFieldFormatterExtens
 
 	public CustomStringBlockFormatter(Options options) {
 		this(options.blocks, options.delimiters, options.forceCase, options.prefix, options.numericOnly);
+	}
+
+	@Override
+	protected CustomStringBlockFormatterState getState() {
+		return (CustomStringBlockFormatterState) super.getState();
 	}
 
 	/**

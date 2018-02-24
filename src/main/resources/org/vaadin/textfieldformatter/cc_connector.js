@@ -7,9 +7,9 @@ window.org_vaadin_textfieldformatter_CreditCardFieldFormatter = function() {
     var cleave = undefined;
 
     this.onStateChange = function(e) {
-    	if (this.cleave) {
-    		this.cleave.destroy();
-    	}
+        if (this.cleave) {
+            this.cleave.destroy();
+        }
         if (this.getState().listenCChange) {
             this.cleave = new Cleave(el, {
                 creditCard: true,
