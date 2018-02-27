@@ -8,8 +8,6 @@ import com.vaadin.ui.TextField;
 
 public class CSBFDelimitersUI extends AbstractTest {
 
-	public static final String INITIAL_VALUE = "Foo!";
-
 	@Override
 	public Component getTestComponent() {
 		TextField tf = new TextField();

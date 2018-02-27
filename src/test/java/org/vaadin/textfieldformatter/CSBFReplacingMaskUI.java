@@ -10,10 +10,10 @@ import com.vaadin.ui.TextField;
 
 public class CSBFReplacingMaskUI extends AbstractTest {
 
-	public static final String INITIAL_VALUE = "Foo!";
-
-	private final Options formatterA = new Options(new int[] { 1, 2, 3 }, new String[] { "-", "-" }, ForceCase.UPPER, null, false);
-	private final Options formatterB = new Options(new int[] { 2, 2 }, new String[] { "*" }, ForceCase.UPPER, null, false);
+	private final Options formatterA = new Options(new int[] { 1, 2, 3 }, new String[] { "-", "-" }, ForceCase.UPPER,
+			null, false);
+	private final Options formatterB = new Options(new int[] { 2, 2 }, new String[] { "*" }, ForceCase.UPPER, null,
+			false);
 	private CustomStringBlockFormatter current;
 	private TextField textField;
 

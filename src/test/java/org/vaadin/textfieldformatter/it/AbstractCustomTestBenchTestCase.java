@@ -44,22 +44,26 @@ public abstract class AbstractCustomTestBenchTestCase extends TestBenchTestCase 
 		}
 	}
 
+	protected void startBrowser() {
+		startBrowser(null);
+	}
+
 	protected void startBrowser(WebDriver driver) {
 		if (this.driver != null) {
 			this.driver.quit();
 		}
+		ChromeOptions opt = new ChromeOptions();
+		String headless = System.getProperty("test.headless");
+		if (headless != null && Boolean.valueOf(headless)) {
+			opt.setHeadless(true);
+		}
+		driver = new ChromeDriver(opt);
 		setDriver(driver);
 		WebDriverExtensionsContext.setDriver(driver);
 	}
 
 	protected <T extends AbstractTest> void openUI(Class<T> testClass) {
 		driver.navigate().to(BASEURL + testClass.getName());
-	}
-
-	public static ChromeDriver createHeadlessChromeDriver() {
-		ChromeOptions options = new ChromeOptions();
-		options.setHeadless(true);
-		return new ChromeDriver(options);
 	}
 
 	@After

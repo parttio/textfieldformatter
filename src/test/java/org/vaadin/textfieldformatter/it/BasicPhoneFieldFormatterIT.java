@@ -12,12 +12,12 @@ import com.vaadin.testbench.elements.TextFieldElement;
  * BasicJavaSCriptComponentUsageUI. For more complex tests, consider using
  * page object pattern.
  */
-public class BasicPhoneFieldFormatterUsageIT extends AbstractCustomTestBenchTestCase {
+public class BasicPhoneFieldFormatterIT extends AbstractCustomTestBenchTestCase {
 
 
 	@Before
 	public void init() {
-		startBrowser(createHeadlessChromeDriver());
+		startBrowser();
 	}
 
     @Test

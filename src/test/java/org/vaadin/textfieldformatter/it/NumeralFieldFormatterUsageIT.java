@@ -12,7 +12,7 @@ public class NumeralFieldFormatterUsageIT extends AbstractCustomTestBenchTestCas
 
 	@Before
 	public void init() {
-		startBrowser(createHeadlessChromeDriver());
+		startBrowser();
 	}
 
 	@Test
