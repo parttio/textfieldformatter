@@ -2,10 +2,8 @@ package org.vaadin.textfieldformatter;
 
 import java.util.ArrayList;
 
-import com.vaadin.annotations.JavaScript;
 import com.vaadin.ui.AbstractTextField;
 
-@JavaScript({ "connector.js" })
 public class CustomStringBlockFormatter extends CleaveExtension {
 
 	/**

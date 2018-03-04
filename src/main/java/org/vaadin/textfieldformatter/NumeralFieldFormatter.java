@@ -1,10 +1,7 @@
 package org.vaadin.textfieldformatter;
 
-import com.vaadin.annotations.JavaScript;
-import com.vaadin.server.AbstractJavaScriptExtension;
 import com.vaadin.ui.AbstractTextField;
 
-@JavaScript({ "numeral_connector.js" })
 public class NumeralFieldFormatter extends CleaveExtension {
 	public static String DEFAULT_DELIMITER = ",";
 	public static int DEFAULT_DECIMAL_SCALE = 2;

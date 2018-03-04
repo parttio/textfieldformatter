@@ -3,13 +3,10 @@ package org.vaadin.textfieldformatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vaadin.annotations.JavaScript;
-import com.vaadin.server.AbstractJavaScriptExtension;
 import com.vaadin.ui.AbstractTextField;
 
 import elemental.json.JsonArray;
 
-@JavaScript({ "cc_connector.js" })
 public class CreditCardFieldFormatter extends CleaveExtension {
 
 	private final List<CreditCardChangedListener> listeners = new ArrayList<>();

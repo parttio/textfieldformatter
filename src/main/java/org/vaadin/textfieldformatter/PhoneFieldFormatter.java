@@ -1,10 +1,9 @@
 package org.vaadin.textfieldformatter;
 
 import com.vaadin.annotations.JavaScript;
-import com.vaadin.server.AbstractJavaScriptExtension;
 import com.vaadin.ui.AbstractTextField;
 
-@JavaScript({ "cleave-phone.i18n.js", "phone_connector.js" })
+@JavaScript({ "cleave-phone.i18n.js" })
 public class PhoneFieldFormatter extends CleaveExtension {
 
 	public PhoneFieldFormatter(String phoneRegionCode) {

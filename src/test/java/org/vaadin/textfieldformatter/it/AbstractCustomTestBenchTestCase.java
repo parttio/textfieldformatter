@@ -29,7 +29,6 @@ public abstract class AbstractCustomTestBenchTestCase extends TestBenchTestCase 
 		try {
 			server = new TServer().startServer(TESTPORT);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -40,7 +39,6 @@ public abstract class AbstractCustomTestBenchTestCase extends TestBenchTestCase 
 			try {
 				server.stop();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
