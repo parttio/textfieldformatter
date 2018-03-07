@@ -10,6 +10,7 @@ import elemental.json.JsonArray;
 public class CreditCardFieldFormatter extends CleaveExtension {
 
 	private final List<CreditCardChangedListener> listeners = new ArrayList<>();
+	private AttributeExtension attributes = new AttributeExtension();
 
 	public CreditCardFieldFormatter() {
 		this(false);
@@ -30,14 +31,16 @@ public class CreditCardFieldFormatter extends CleaveExtension {
 	}
 
 	/**
-	 * Adds this extension to a TextField. Extension cannot be moved to
-	 * another TextField again.
+	 * Adds this extension to a TextField. Extension cannot be moved to another
+	 * TextField again.
 	 * 
 	 * @param textField
 	 *            TextField to attach this extension to
 	 */
 	public void extend(AbstractTextField textField) {
 		super.extend(textField);
+		attributes.addAttribute("autocomplete", "cc-number");
+		attributes.extend(textField);
 	}
 
 	public void addCreditCardChangedListener(CreditCardChangedListener listener) {

@@ -119,3 +119,27 @@ window.org_vaadin_textfieldformatter_CreditCardFieldFormatter = function() {
     };
 
 }
+
+window.org_vaadin_textfieldformatter_AttributeExtension = function() {
+
+    var el = this.getElement(this.getParentId());
+    var connector = this;
+
+    this.onStateChange = function(e) {
+
+       let attributes = this.getState().attributes;
+       if (attributes.length === 2) {
+           for (i = 0; i < attributes[0].length; i++) {
+               el.setAttribute(attributes[0][i], attributes[1][i]);
+           }
+       }
+    };
+
+    this.onUnregister = function() {
+       let attributes = this.getState().attributes;
+       for (let [key, value] of attributes.entries()) {
+               console.log(key + ' = '  + value);
+       }
+    };
+
+}
