@@ -34,5 +34,6 @@ public class CreditCardFieldFormatterIT extends AbstractCustomTestBenchTestCase 
 		Assert.assertEquals("VISA", notification.getCaption());
 		tf.sendKeys("000000000000000");
 		Assert.assertEquals("4000 0000 0000 0000", tf.getValue());
+		Assert.assertEquals(tf.getAttribute("autocomplete"), "cc-number");
 	}
 }
