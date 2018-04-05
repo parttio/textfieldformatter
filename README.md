@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/johannesh2/textfieldformatter.svg?branch=master)](https://travis-ci.org/johannesh2/textfieldformatter)
 
 [![Published on vaadin.com/directory](https://img.shields.io/vaadin-directory/status/textfield-formatter.svg)](https://vaadin.com/directory/component/textfield-formatter)
+[![Published on vaadin.com/directory](https://img.shields.io/vaadin-directory/star/textfield-formatter.svg)](https://vaadin.com/directory/component/textfield-formatter)
 
 # TextField Formatter
 
