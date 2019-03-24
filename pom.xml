@@ -331,7 +331,7 @@ Guava conflict forces not to use Reflections in ApplicationServiceInitListener.j
                     <missing>${user.home}/.vaadin/proKey</missing>
                 </file>
                 <property>
-                    <name>!vaadin.testbench.developer.license</name>
+                    <name>!vaadin.proKey</name>
                 </property>
             </activation>
             <build>
