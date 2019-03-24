@@ -66,18 +66,14 @@
             <artifactId>vaadin-testbench</artifactId>
             <scope>test</scope>
         </dependency>
-		<dependency>
-		   <groupId>org.vaadin</groupId>
-		   <artifactId>addon-test-helpers</artifactId>
-		   <version>2.1</version>
-		   <scope>test</scope>
-		</dependency>
-		<dependency>
+<!--
+Guava conflict forces not to use Reflections in ApplicationServiceInitListener.java
+<dependency>
 		    <groupId>org.reflections</groupId>
 		    <artifactId>reflections</artifactId>
 		    <version>0.9.11</version>
 		    <scope>test</scope>
-		</dependency>
+		</dependency> -->
     </dependencies>
     <repositories>
         <repository>
@@ -112,26 +108,23 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>com.github.webdriverextensions</groupId>
-                <artifactId>webdriverextensions-maven-plugin</artifactId>
-                <version>3.1.3</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>install-drivers</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <drivers>
-                        <driver>
-                            <name>chromedriver</name>
-                            <version>2.35</version>
-                        </driver>
-                    </drivers>
-                </configuration>
-            </plugin>
+			<plugin>
+			    <groupId>com.lazerycode.selenium</groupId>
+			    <artifactId>driver-binary-downloader-maven-plugin</artifactId>
+			    <version>1.0.17</version>
+			    <configuration>
+			        <downloadedZipFileDirectory>${project.basedir}/webdriver/zips</downloadedZipFileDirectory>
+			        <rootStandaloneServerDirectory>${project.basedir}/webdriver</rootStandaloneServerDirectory>
+			        <customRepositoryMap>${project.basedir}/webdrivers.xml</customRepositoryMap>
+			    </configuration>
+			    <executions>
+			        <execution>
+			            <goals>
+			                <goal>selenium</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+			</plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
@@ -139,6 +132,7 @@
                 <configuration>
                     <systemPropertyVariables>
                         <test.headless>${test.headless}</test.headless>
+                        <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
                     </systemPropertyVariables>
                 </configuration>
                 <executions>
@@ -197,7 +191,25 @@
                         	<resourceBase>src/main/resources/META-INF/resources</resourceBase>
                         </resourceBases>
                     </webAppConfig>
+			        <stopPort>9966</stopPort>
+			        <stopKey>STOP</stopKey>
                 </configuration>
+			    <executions>
+			        <execution>
+			            <id>start-jetty</id>
+			            <phase>pre-integration-test</phase>
+			            <goals>
+			                <goal>start</goal>
+			            </goals>
+			        </execution>
+			        <execution>
+			            <id>stop-jetty</id>
+			            <phase>post-integration-test</phase>
+			            <goals>
+			                <goal>stop</goal>
+			            </goals>
+			        </execution>
+			    </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -208,6 +220,41 @@
                 </configuration>
             </plugin>
         </plugins>
+        <pluginManagement>
+        	<plugins>
+        		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        		<plugin>
+        			<groupId>org.eclipse.m2e</groupId>
+        			<artifactId>lifecycle-mapping</artifactId>
+        			<version>1.0.0</version>
+        			<configuration>
+        				<lifecycleMappingMetadata>
+        					<pluginExecutions>
+        						<pluginExecution>
+        							<pluginExecutionFilter>
+        								<groupId>
+        									com.lazerycode.selenium
+        								</groupId>
+        								<artifactId>
+        									driver-binary-downloader-maven-plugin
+        								</artifactId>
+        								<versionRange>
+        									[1.0.17,)
+        								</versionRange>
+        								<goals>
+        									<goal>selenium</goal>
+        								</goals>
+        							</pluginExecutionFilter>
+        							<action>
+        								<ignore></ignore>
+        							</action>
+        						</pluginExecution>
+        					</pluginExecutions>
+        				</lifecycleMappingMetadata>
+        			</configuration>
+        		</plugin>
+        	</plugins>
+        </pluginManagement>
     </build>
 
     <profiles>
@@ -281,7 +328,7 @@
             <id>no-testbench</id>
             <activation>
                 <file>
-                    <missing>${user.home}/vaadin.testbench.developer.license</missing>
+                    <missing>${user.home}/.vaadin/proKey</missing>
                 </file>
                 <property>
                     <name>!vaadin.testbench.developer.license</name>

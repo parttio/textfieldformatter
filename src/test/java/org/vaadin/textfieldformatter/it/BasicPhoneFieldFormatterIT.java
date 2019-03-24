@@ -2,6 +2,7 @@ package org.vaadin.textfieldformatter.it;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.vaadin.textfieldformatter.BasicPhoneFieldFormatterUsageUI;
 
@@ -20,6 +21,7 @@ public class BasicPhoneFieldFormatterIT extends AbstractCustomTestBenchTestCase 
 	}
 
 	@Test
+	@Ignore
 	public void vaadinSalesGermany() throws InterruptedException {
 
 		openUI(BasicPhoneFieldFormatterUsageUI.class);

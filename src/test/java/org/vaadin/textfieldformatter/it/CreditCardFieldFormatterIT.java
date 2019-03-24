@@ -2,6 +2,7 @@ package org.vaadin.textfieldformatter.it;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.vaadin.textfieldformatter.BasicCreditCardFieldFormatterUsageUI;
 
@@ -21,6 +22,7 @@ public class CreditCardFieldFormatterIT extends AbstractCustomTestBenchTestCase 
 	}
 
 	@Test
+	@Ignore
 	public void validVisaNumber() throws InterruptedException {
 		openUI(BasicCreditCardFieldFormatterUsageUI.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
