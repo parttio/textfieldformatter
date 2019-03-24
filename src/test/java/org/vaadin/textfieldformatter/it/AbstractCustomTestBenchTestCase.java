@@ -7,8 +7,8 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.vaadin.addonhelpers.AbstractTest;
 import org.vaadin.addonhelpers.TServer;
+import org.vaadin.textfieldformatter.AbstractTest;
 
 import com.github.webdriverextensions.WebDriverExtensionsContext;
 import com.github.webdriverextensions.internal.junitrunner.DriverPathLoader;

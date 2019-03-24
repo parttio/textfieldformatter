@@ -10,8 +10,8 @@ import org.vaadin.textfieldformatter.CSBFNumericAndPrefixWithBuilderUI;
 import org.vaadin.textfieldformatter.CSBFNumericOnlyUI;
 import org.vaadin.textfieldformatter.CSBFReplacingMaskUI;
 
-import com.vaadin.testbench.elements.ButtonElement;
-import com.vaadin.testbench.elements.TextFieldElement;
+import com.vaadin.flow.component.button.testbench.ButtonElement;
+import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
 
 public class CustomStringBlockFormatterIT extends AbstractCustomTestBenchTestCase {
 

@@ -2,7 +2,7 @@ package org.vaadin.textfieldformatter;
 
 import java.util.ArrayList;
 
-import com.vaadin.ui.AbstractTextField;
+import com.vaadin.flow.component.textfield.TextField;
 
 public class CustomStringBlockFormatter extends CleaveExtension {
 
@@ -28,36 +28,31 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 	 */
 	public CustomStringBlockFormatter(int[] blocks, String[] delimiters, ForceCase forceCase, String prefix,
 			boolean numericOnly) {
-		getState().formatBlocks = blocks;
-		getState().delimiters = delimiters;
+		getConfiguration().blocks = blocks;
+		getConfiguration().delimiters = delimiters;
 		if (forceCase == ForceCase.UPPER) {
-			getState().lowercase = false;
-			getState().uppercase = true;
+			getConfiguration().lowercase = false;
+			getConfiguration().uppercase = true;
 		} else if (forceCase == ForceCase.LOWER) {
-			getState().lowercase = true;
-			getState().uppercase = false;
+			getConfiguration().lowercase = true;
+			getConfiguration().uppercase = false;
 		}
-		getState().prefix = prefix;
-		getState().numericOnly = numericOnly;
+		getConfiguration().prefix = prefix;
+		getConfiguration().numericOnly = numericOnly;
 	}
 
 	public CustomStringBlockFormatter(Options options) {
 		this(options.blocks, options.delimiters, options.forceCase, options.prefix, options.numericOnly);
 	}
 
-	@Override
-	protected CustomStringBlockFormatterState getState() {
-		return (CustomStringBlockFormatterState) super.getState();
-	}
-
 	/**
-	 * Adds this extension to a TextField. Extension cannot be moved to
-	 * another TextField again.
+	 * Adds this extension to a TextField. Extension cannot be moved to another
+	 * TextField again.
 	 * 
 	 * @param textField
 	 *            TextField to attach this extension to
 	 */
-	public void extend(AbstractTextField textField) {
+	public void extend(TextField textField) {
 		super.extend(textField);
 	}
 

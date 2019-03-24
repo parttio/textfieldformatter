@@ -1,12 +1,11 @@
 package org.vaadin.textfieldformatter;
 
-import org.vaadin.addonhelpers.AbstractTest;
 import org.vaadin.textfieldformatter.CustomStringBlockFormatter.ForceCase;
 import org.vaadin.textfieldformatter.CustomStringBlockFormatter.Options;
 
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.TextField;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.textfield.TextField;
 
 public class CSBFReplacingMaskUI extends AbstractTest {
 
@@ -33,7 +32,7 @@ public class CSBFReplacingMaskUI extends AbstractTest {
 		});
 		toggleButton.setId("switch");
 		toggleButton.setDisableOnClick(true);
-		content.addComponent(toggleButton);
+		add(toggleButton);
 	}
 
 	private void replaceFormatter(TextField textField, Options options) {

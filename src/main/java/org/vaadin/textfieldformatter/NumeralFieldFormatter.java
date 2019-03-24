@@ -1,6 +1,6 @@
 package org.vaadin.textfieldformatter;
 
-import com.vaadin.ui.AbstractTextField;
+import com.vaadin.flow.component.textfield.TextField;
 
 public class NumeralFieldFormatter extends CleaveExtension {
 	public static String DEFAULT_DELIMITER = ",";
@@ -37,28 +37,24 @@ public class NumeralFieldFormatter extends CleaveExtension {
 	 */
 	public NumeralFieldFormatter(String delimiter, String decimalMark, int integerScale, int decimalScale,
 			boolean nonNegativeOnly) {
-		getState().delimiter = delimiter;
-		getState().numeralDecimalMark = decimalMark;
+		getConfiguration().numeral = true;
+		getConfiguration().delimiter = delimiter;
+		getConfiguration().numeralDecimalMark = decimalMark;
 		if (integerScale != -1) {
-			getState().numeralIntegerScale = integerScale;
+			getConfiguration().numeralIntegerScale = integerScale;
 		}
-		getState().numeralDecimalScale = decimalScale;
-		getState().numeralPositiveOnly = nonNegativeOnly;
-	}
-
-	@Override
-	protected NumeralFieldFormatterState getState() {
-		return (NumeralFieldFormatterState) super.getState();
+		getConfiguration().numeralDecimalScale = decimalScale;
+		getConfiguration().numeralPositiveOnly = nonNegativeOnly;
 	}
 
 	/**
-	 * Attaches this extension to a TextField. Extension cannot be moved to
-	 * another TextField again.
+	 * Attaches this extension to a TextField. Extension cannot be moved to another
+	 * TextField again.
 	 * 
 	 * @param textField
 	 *            TextField to attach this extension to
 	 */
-	public void extend(AbstractTextField textField) {
+	public void extend(TextField textField) {
 		super.extend(textField);
 	}
 }

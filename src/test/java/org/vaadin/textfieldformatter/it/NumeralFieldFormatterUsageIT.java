@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.vaadin.textfieldformatter.CustomNumeralFieldFormatterUsageUI;
 import org.vaadin.textfieldformatter.DefaultNumeralFieldFormatterUsageUI;
 
-import com.vaadin.testbench.elements.TextFieldElement;
+import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
 
 public class NumeralFieldFormatterUsageIT extends AbstractCustomTestBenchTestCase {
 

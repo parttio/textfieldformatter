@@ -1,10 +1,8 @@
 package org.vaadin.textfieldformatter;
 
-import org.vaadin.addonhelpers.AbstractTest;
-
-import com.vaadin.ui.Component;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.TextField;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.textfield.TextField;
 
 public class CustomNumeralFieldFormatterUsageUI extends AbstractTest {
 
