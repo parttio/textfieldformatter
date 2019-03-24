@@ -19,7 +19,7 @@
         <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
         <Vaadin-License-Title>Apache License 2.0</Vaadin-License-Title>
         <Vaadin-Addon>${project.artifactId}-${project.version}.jar</Vaadin-Addon>
-        <github.account>johannesh2</github.account>
+        <github.account>johanneshayry</github.account>
         <github.project>textfieldformatter</github.project>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -217,6 +217,7 @@ Guava conflict forces not to use Reflections in ApplicationServiceInitListener.j
                 <version>2.5.3</version>
                 <configuration>
                     <releaseProfiles>directorypackage</releaseProfiles>
+                    <arguments>-Dtest.headless</arguments>
                 </configuration>
             </plugin>
         </plugins>
