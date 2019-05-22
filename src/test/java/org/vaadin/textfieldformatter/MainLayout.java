@@ -9,8 +9,11 @@ import com.vaadin.flow.router.RouteConfiguration;
 import com.vaadin.flow.router.RouteData;
 import com.vaadin.flow.router.RouterLayout;
 import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.theme.Theme;
+import com.vaadin.flow.theme.lumo.Lumo;
 
 @Route("")
+@Theme(Lumo.class)
 public class MainLayout extends HorizontalLayout implements RouterLayout {
 
 	private VerticalLayout menu;

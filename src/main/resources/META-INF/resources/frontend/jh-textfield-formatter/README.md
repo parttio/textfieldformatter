@@ -1,6 +1,6 @@
 # \<jh-textfield-formatter\>
 
-Polymer 2 Web Component wrapper for Cleave.js
+Polymer 3 Web Component wrapper for Cleave.js
 
 ## Install the Polymer-CLI
 

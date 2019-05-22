@@ -10,7 +10,7 @@
     </organization>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <vaadin.version>13.0.1</vaadin.version>
+        <vaadin.version>14.0.0.beta2</vaadin.version>
         <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
         <!-- ZIP Manifest fields -->
         <Implementation-Version>${project.version}</Implementation-Version>
@@ -53,14 +53,15 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-core</artifactId>
         </dependency>
-		<dependency>
-		    <groupId>org.webjars.bowergithub.nosir</groupId>
-		    <artifactId>cleave.js</artifactId>
-		    <version>1.4.10</version>
-		</dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-testbench</artifactId>
@@ -69,11 +70,11 @@
 <!--
 Guava conflict forces not to use Reflections in ApplicationServiceInitListener.java
 <dependency>
-		    <groupId>org.reflections</groupId>
-		    <artifactId>reflections</artifactId>
-		    <version>0.9.11</version>
-		    <scope>test</scope>
-		</dependency> -->
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.11</version>
+            <scope>test</scope>
+        </dependency> -->
     </dependencies>
     <repositories>
         <repository>
@@ -81,17 +82,27 @@ Guava conflict forces not to use Reflections in ApplicationServiceInitListener.j
             <url>http://maven.vaadin.com/vaadin-addons</url>
         </repository>
         <repository>
-            <id>webjars</id>
-            <url>https://dl.bintray.com/webjars/maven</url>
+            <id>vaadin-prereleases</id>
+            <url>https://maven.vaadin.com/vaadin-prereleases</url>
+            <snapshots><enabled>false</enabled></snapshots>
         </repository>
     </repositories>
+
+    <pluginRepositories>
+      <!-- Repository needed for prerelease versions of Vaadin -->
+      <pluginRepository>
+        <id>vaadin-prereleases</id>
+        <url>https://maven.vaadin.com/vaadin-prereleases</url>
+        <snapshots><enabled>false</enabled></snapshots>
+      </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <excludes>
-                    <exclude>**/bower_components/</exclude>
+                    <exclude>**/node_modules/</exclude>
                     <exclude>**/test/</exclude>
                     <exclude>**/demo/</exclude>
                     <exclude>**/services/</exclude>
@@ -108,23 +119,23 @@ Guava conflict forces not to use Reflections in ApplicationServiceInitListener.j
                     <target>1.8</target>
                 </configuration>
             </plugin>
-			<plugin>
-			    <groupId>com.lazerycode.selenium</groupId>
-			    <artifactId>driver-binary-downloader-maven-plugin</artifactId>
-			    <version>1.0.17</version>
-			    <configuration>
-			        <downloadedZipFileDirectory>${project.basedir}/webdriver/zips</downloadedZipFileDirectory>
-			        <rootStandaloneServerDirectory>${project.basedir}/webdriver</rootStandaloneServerDirectory>
-			        <customRepositoryMap>${project.basedir}/webdrivers.xml</customRepositoryMap>
-			    </configuration>
-			    <executions>
-			        <execution>
-			            <goals>
-			                <goal>selenium</goal>
-			            </goals>
-			        </execution>
-			    </executions>
-			</plugin>
+            <plugin>
+                <groupId>com.lazerycode.selenium</groupId>
+                <artifactId>driver-binary-downloader-maven-plugin</artifactId>
+                <version>1.0.17</version>
+                <configuration>
+                    <downloadedZipFileDirectory>${project.basedir}/webdriver/zips</downloadedZipFileDirectory>
+                    <rootStandaloneServerDirectory>${project.basedir}/webdriver</rootStandaloneServerDirectory>
+                    <customRepositoryMap>${project.basedir}/webdrivers.xml</customRepositoryMap>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>selenium</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
@@ -176,40 +187,39 @@ Guava conflict forces not to use Reflections in ApplicationServiceInitListener.j
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.4.15.v20190215</version>
                 <configuration>
-                    <scanIntervalSeconds>-1</scanIntervalSeconds>
+                    <scanIntervalSeconds>2</scanIntervalSeconds>
                     <!-- Use test scope because the UI/demo classes are in 
                         the test package. -->
                     <useTestScope>true</useTestScope>
                     <supportedPackagings>
-                    	<supportedPackaging>jar</supportedPackaging>
+                        <supportedPackaging>jar</supportedPackaging>
                     </supportedPackagings>
                     <webAppConfig>
                         <!-- This is only needed to be able to unzip webjars 
                             directly into src/test/webjar-debug and modify them for testing -->
                         <resourceBases>
-                        	<resourceBase>src/test/webjar-debug/META-INF/resources</resourceBase>
-                        	<resourceBase>src/main/resources/META-INF/resources</resourceBase>
+                            <resourceBase>src/main/resources/META-INF/resources</resourceBase>
                         </resourceBases>
                     </webAppConfig>
-			        <stopPort>9966</stopPort>
-			        <stopKey>STOP</stopKey>
+                    <stopPort>9966</stopPort>
+                    <stopKey>STOP</stopKey>
                 </configuration>
-			    <executions>
-			        <execution>
-			            <id>start-jetty</id>
-			            <phase>pre-integration-test</phase>
-			            <goals>
-			                <goal>start</goal>
-			            </goals>
-			        </execution>
-			        <execution>
-			            <id>stop-jetty</id>
-			            <phase>post-integration-test</phase>
-			            <goals>
-			                <goal>stop</goal>
-			            </goals>
-			        </execution>
-			    </executions>
+                <executions>
+                    <execution>
+                        <id>start-jetty</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>stop-jetty</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -220,41 +230,54 @@ Guava conflict forces not to use Reflections in ApplicationServiceInitListener.j
                     <arguments>-Dtest.headless</arguments>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-maven-plugin</artifactId>
+                <version>${vaadin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-frontend</goal>
+                            <goal>build-frontend</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
         <pluginManagement>
-        	<plugins>
-        		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-        		<plugin>
-        			<groupId>org.eclipse.m2e</groupId>
-        			<artifactId>lifecycle-mapping</artifactId>
-        			<version>1.0.0</version>
-        			<configuration>
-        				<lifecycleMappingMetadata>
-        					<pluginExecutions>
-        						<pluginExecution>
-        							<pluginExecutionFilter>
-        								<groupId>
-        									com.lazerycode.selenium
-        								</groupId>
-        								<artifactId>
-        									driver-binary-downloader-maven-plugin
-        								</artifactId>
-        								<versionRange>
-        									[1.0.17,)
-        								</versionRange>
-        								<goals>
-        									<goal>selenium</goal>
-        								</goals>
-        							</pluginExecutionFilter>
-        							<action>
-        								<ignore />
-        							</action>
-        						</pluginExecution>
-        					</pluginExecutions>
-        				</lifecycleMappingMetadata>
-        			</configuration>
-        		</plugin>
-        	</plugins>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            com.lazerycode.selenium
+                                        </groupId>
+                                        <artifactId>
+                                            driver-binary-downloader-maven-plugin
+                                        </artifactId>
+                                        <versionRange>
+                                            [1.0.17,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>selenium</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
         </pluginManagement>
     </build>
 

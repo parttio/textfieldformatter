@@ -5,10 +5,10 @@ import java.lang.ref.WeakReference;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.UI;
-import com.vaadin.flow.component.dependency.HtmlImport;
+import com.vaadin.flow.component.dependency.JsModule;
 
 @Tag("jh-textfield-formatter")
-@HtmlImport("bower_components/jh-textfield-formatter/jh-textfield-formatter.html")
+@JsModule("jh-textfield-formatter/jh-textfield-formatter.js")
 public abstract class CleaveExtension extends Component {
 
 	private WeakReference<Component> extended;

@@ -4,7 +4,9 @@ import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.router.Route;
 
+@Route(registerAtStartup = false)
 public abstract class AbstractTest extends VerticalLayout {
 
 	public AbstractTest() {
