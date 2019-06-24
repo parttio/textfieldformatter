@@ -6,3 +6,4 @@ webdriver
 *.log
 node_modules
 webpack.config.js
+webpack.generated.js
