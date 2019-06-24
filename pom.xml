@@ -198,6 +198,7 @@ Guava conflict forces not to use Reflections in ApplicationServiceInitListener.j
                     <supportedPackagings>
                         <supportedPackaging>jar</supportedPackaging>
                     </supportedPackagings>
+                    <webAppConfig>
                         <allowDuplicateFragmentNames>true</allowDuplicateFragmentNames>
                     </webAppConfig>
                     <stopPort>9966</stopPort>
