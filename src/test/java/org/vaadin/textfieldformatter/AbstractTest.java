@@ -6,7 +6,7 @@ import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
-@Route(registerAtStartup = false)
+@Route(layout = MainView.class)
 public abstract class AbstractTest extends VerticalLayout {
 
 	public AbstractTest() {

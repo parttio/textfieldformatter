@@ -12,14 +12,14 @@ import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
 
-@Route("")
+@Route
 @Theme(Lumo.class)
-public class MainLayout extends HorizontalLayout implements RouterLayout {
+public class MainView extends HorizontalLayout implements RouterLayout {
 
 	private VerticalLayout menu;
 	private HasElement content;
 
-	public MainLayout() {
+	public MainView() {
 		menu = new VerticalLayout();
 		menu.setSpacing(true);
 		menu.setMargin(true);

@@ -1,16 +1,20 @@
 package org.vaadin.textfieldformatter.it;
 
-import org.junit.After;
+import org.junit.Rule;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.vaadin.textfieldformatter.AbstractTest;
 
+import com.vaadin.testbench.ScreenshotOnFailureRule;
 import com.vaadin.testbench.TestBenchTestCase;
 
 public abstract class AbstractCustomTestBenchTestCase extends TestBenchTestCase {
 	protected static final int TESTPORT = 8080;
 	protected static final String BASEURL = "http://localhost:" + TESTPORT + "/";
+
+	@Rule
+	public ScreenshotOnFailureRule screenshotOnFailure = new ScreenshotOnFailureRule(this, true);
 
 	public AbstractCustomTestBenchTestCase() {
 		super();
@@ -34,13 +38,6 @@ public abstract class AbstractCustomTestBenchTestCase extends TestBenchTestCase 
 	}
 
 	protected <T extends AbstractTest> void openUI(Class<T> testClass) {
-		driver.navigate().to(BASEURL + testClass.getSimpleName());
-	}
-
-	@After
-	public void teardown() {
-		if (driver != null) {
-			driver.quit();
-		}
+		driver.get(BASEURL + testClass.getSimpleName().toLowerCase());
 	}
 }
