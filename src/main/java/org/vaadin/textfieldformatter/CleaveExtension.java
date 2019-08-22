@@ -8,7 +8,7 @@ import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dependency.JsModule;
 
 @Tag("jh-textfield-formatter")
-@JsModule("jh-textfield-formatter/jh-textfield-formatter.js")
+@JsModule("./jh-textfield-formatter/jh-textfield-formatter.js")
 public abstract class CleaveExtension extends Component {
 
 	private WeakReference<Component> extended;
