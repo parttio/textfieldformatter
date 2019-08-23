@@ -6,8 +6,6 @@ import java.util.List;
 import com.vaadin.flow.component.ClientCallable;
 import com.vaadin.flow.component.textfield.TextField;
 
-import elemental.json.JsonArray;
-
 public class CreditCardFieldFormatter extends CleaveExtension {
 
 	private final List<CreditCardChangedListener> listeners = new ArrayList<>();
