@@ -48,25 +48,17 @@ class JhTextfieldFormatter extends PolymerElement {
     }
 
     this.conf = newConf;
+    if (newConf.creditCard) {
+      newConf.onCreditCardTypeChanged = type => {
+        this.$server.onCreditCardChanged(type);
+      }
+    }
     if (!this.cleave) {
       this.cleave = new Cleave(this.parentElement, newConf);
     } else {
       this.cleave.destroy();
       this.cleave = new Cleave(this.parentElement, newConf)
     }
-/*
-    if (this.getState().listenCChange) {
-        this.cleave = new Cleave(el, {
-            creditCard: true,
-            credtiCardStrictMode: connector.getState().creditCardStrictMode,
-            onCreditCardTypeChanged: function(type) {
-                connector.onCreditCardChanged(type);
-            }
-        });
-    } else {
-*/
-        /*creditCardStrictMode: connector.getState().creditCardStrictMode*/
-/*        }*/
   }
 }
 

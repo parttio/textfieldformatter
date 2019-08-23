@@ -2,18 +2,12 @@ package org.vaadin.textfieldformatter.it;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.vaadin.textfieldformatter.BasicCreditCardFieldFormatterUsageUI;
 
 import com.vaadin.flow.component.notification.testbench.NotificationElement;
 import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
 
-/**
- * A simple example that uses Selenium to do a browser level test for a
- * BasicJavaSCriptComponentUsageUI. For more complex tests, consider using page
- * object pattern.
- */
 public class CreditCardFieldFormatterIT extends AbstractCustomTestBenchTestCase {
 
 	@Before
@@ -22,7 +16,6 @@ public class CreditCardFieldFormatterIT extends AbstractCustomTestBenchTestCase 
 	}
 
 	@Test
-	@Ignore
 	public void validVisaNumber() throws InterruptedException {
 		openUI(BasicCreditCardFieldFormatterUsageUI.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
