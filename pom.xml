@@ -71,14 +71,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
         </dependency>
-<!--
-Guava conflict forces not to use Reflections in ApplicationServiceInitListener.java
-<dependency>
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <version>0.9.11</version>
-            <scope>test</scope>
-        </dependency> -->
     </dependencies>
     <repositories>
         <repository>
@@ -192,7 +184,7 @@ Guava conflict forces not to use Reflections in ApplicationServiceInitListener.j
                 <version>9.4.15.v20190215</version>
                 <configuration>
                     <scanIntervalSeconds>2</scanIntervalSeconds>
-                    <!-- Use test scope because the UI/demo classes are in 
+                    <!-- Use test scope because the UI/demo classes are in
                         the test package. -->
                     <useTestScope>true</useTestScope>
                     <supportedPackagings>
@@ -204,7 +196,7 @@ Guava conflict forces not to use Reflections in ApplicationServiceInitListener.j
                     <stopPort>9966</stopPort>
                     <stopKey>STOP</stopKey>
                 </configuration>
-				<executions>
+                <executions>
                     <execution>
                         <id>start-jetty</id>
                         <phase>pre-integration-test</phase>
@@ -227,18 +219,6 @@ Guava conflict forces not to use Reflections in ApplicationServiceInitListener.j
                 <configuration>
                     <releaseProfiles>directorypackage</releaseProfiles>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-maven-plugin</artifactId>
-                <version>${vaadin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>prepare-frontend</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
         <pluginManagement>
@@ -280,6 +260,25 @@ Guava conflict forces not to use Reflections in ApplicationServiceInitListener.j
 
     <profiles>
         <profile>
+            <id>development</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.vaadin</groupId>
+                        <artifactId>vaadin-maven-plugin</artifactId>
+                        <version>${vaadin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>prepare-frontend</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
             <!-- Production mode is activated using -Pproduction -->
             <id>production</id>
             <properties>
@@ -291,6 +290,23 @@ Guava conflict forces not to use Reflections in ApplicationServiceInitListener.j
                     <artifactId>flow-server-production-mode</artifactId>
                 </dependency>
             </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.vaadin</groupId>
+                        <artifactId>vaadin-maven-plugin</artifactId>
+                        <version>${vaadin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>build-frontend</goal>
+                                </goals>
+                                <phase>compile</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
         <profile>
             <id>directorypackage</id>
