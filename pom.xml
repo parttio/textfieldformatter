@@ -228,9 +228,7 @@
                         <artifactId>jetty-maven-plugin</artifactId>
                         <version>9.4.15.v20190215</version>
                         <configuration>
-                            <scanIntervalSeconds>2</scanIntervalSeconds>
-                            <!-- Use test scope because the UI/demo classes are in
-                                the test package. -->
+                            <scanIntervalSeconds>0</scanIntervalSeconds>
                             <useTestScope>true</useTestScope>
                             <supportedPackagings>
                                 <supportedPackaging>jar</supportedPackaging>

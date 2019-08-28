@@ -8,8 +8,8 @@
 if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ "${TRAVIS_BRANCH}" == "master" ] && [ "$TRAVIS_SECURE_ENV_VARS" == "true" ]
 then
 	# Pull request for master with secure variables available
-	mvn -B -e -V -Dvaadin.proKey=$PRO_KEY -Dtest.headless -Pproduction clean verify
+	mvn -B -e -V -Dvaadin.proKey=$PRO_KEY -Dtest.headless -Pci clean verify
 else
 	# Something else than a pull request inside the repository
-	mvn -B -e -V -Dvaadin.proKey=$PRO_KEY -Dtest.headless -Pproduction clean verify
+	mvn -B -e -V -Dvaadin.proKey=$PRO_KEY -Dtest.headless -Pci clean verify
 fi
