@@ -8,6 +8,9 @@ addons:
   apt:
     packages:
       - google-chrome-stable
-
+env:
+  - NODE_VERSION="10.16.3"
+before_install:
+  - nvm install $NODE_VERSION
 install: true
 script: sh ./.travis.script.sh
