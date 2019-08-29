@@ -1,5 +1,5 @@
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
-import Cleave from './cleave-esm.min.js';
+import Cleave from 'cleave.js';
 /**
  * `jh-textfield-formatter`
  * Polymer 2 Web Component wrapper for Cleave.js
