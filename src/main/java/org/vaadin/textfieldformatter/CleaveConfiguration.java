@@ -17,6 +17,7 @@ public class CleaveConfiguration {
 	public Boolean lowercase;
 	public Boolean numericOnly;
 	public String prefix;
+	public boolean showPrefixImmediately;
 
 	public Boolean numeral;
 	public Integer numeralIntegerScale;
@@ -39,6 +40,7 @@ public class CleaveConfiguration {
 		ifNotNull(lowercase, value -> json.put("lowercase", value));
 		ifNotNull(numericOnly, value -> json.put("numericOnly", value));
 		ifNotNull(prefix, value -> json.put("prefix", value));
+		ifNotNull(showPrefixImmediately, value -> json.put("noImmediatePrefix", !value));
 		ifNotNull(numeral, value -> json.put("numeral", value));
 		ifNotNull(numeralIntegerScale, value -> json.put("numeralIntegerScale", value));
 		ifNotNull(numeralDecimalScale, value -> json.put("numeralDecimalScale", value));
