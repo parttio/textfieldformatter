@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.vaadin.addonhelpers.AbstractTest;
 import org.vaadin.addonhelpers.TServer;
+import org.vaadin.textfieldformatter.UITestConfiguration;
 
 import com.github.webdriverextensions.WebDriverExtensionsContext;
 import com.github.webdriverextensions.internal.junitrunner.DriverPathLoader;
@@ -64,6 +65,11 @@ public abstract class AbstractCustomTestBenchTestCase extends TestBenchTestCase 
 
 	protected <T extends AbstractTest> void openUI(Class<T> testClass) {
 		driver.navigate().to(BASEURL + testClass.getName());
+	}
+
+	protected <T extends org.vaadin.textfieldformatter.AbstractTest, U extends UITestConfiguration> void openUI(
+			Class<T> testClass, Class<U> uiTestConfiguration) {
+		driver.navigate().to(BASEURL + testClass.getName() + "/" + uiTestConfiguration.getSimpleName());
 	}
 
 	@After
