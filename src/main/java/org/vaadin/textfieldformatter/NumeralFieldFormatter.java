@@ -14,7 +14,25 @@ public class NumeralFieldFormatter extends CleaveExtension {
 	private final static String DEFAULT_NO_PREFIX = null;
 
 	public static enum ThousandsGroupStyle {
-		THOUSAND("thousand"), LAKH("lakh"), WAN("wan"), NONE("none");
+		/**
+		 * Groups numbers in thousands and the delimiter occurs every 3 digits.
+		 * 1,234,567.89
+		 */
+		THOUSAND("thousand"),
+		/**
+		 * Indian numbering group style. It groups the rightmost 3 digits in a similar
+		 * manner to regular way but then groups every 2 digits thereafter. 12,34,567.89
+		 */
+		LAKH("lakh"),
+		/**
+		 * Chinese numbering group style. It groups numbers in 10-thousand(万, 萬) and the
+		 * delimiter occurs every 4 digits. 123,4567.89
+		 */
+		WAN("wan"),
+		/**
+		 * Does not group thousands. 1234567.89
+		 */
+		NONE("none");
 
 		private ThousandsGroupStyle(String value) {
 			this.value = value;
@@ -52,6 +70,25 @@ public class NumeralFieldFormatter extends CleaveExtension {
 				DEFAULT_SIGN_BEFORE_PREFIX, DEFAULT_STRIP_LEADING_ZEROES, DEFAULT_NO_PREFIX);
 	}
 
+	/**
+	 * Creates a field formatter for numeral fields.
+	 *
+	 * @param delimiter           Delimiter for integer groups. Default `,`
+	 * @param decimalMark         Delimiter for decimal. Default `.`
+	 * @param integerScale        Limit the scale of integer i.e. number of digits
+	 *                            before decimal. Default no limit.
+	 * @param decimalScale        Number of decimals. Default 2.
+	 * @param nonNegativeOnly     True: allow only non-negative numbers. False:
+	 *                            Allow negative, 0 and positive. Default false.
+	 * @param thousandsGroupStyle Thousands separator grouping style see
+	 *                            {@link ThousandsGroupStyle}. Default
+	 *                            ThousandsGroupStyle.THOUSAND
+	 * @param signBeforePrefix    True if the sign of the numeral should appear
+	 *                            before the prefix. Default false.
+	 * @param stripLeadingZeroes  True if zeroes appearing at the beginning of the
+	 *                            number should be stripped out. Default true.
+	 * @param prefix              Prefix e.g. $. Default no prefix.
+	 */
 	public NumeralFieldFormatter(String delimiter, String decimalMark, int integerScale, int decimalScale,
 			boolean nonNegativeOnly, ThousandsGroupStyle thousandsGroupStyle, boolean signBeforePrefix,
 			boolean stripLeadingZeroes, String prefix) {
