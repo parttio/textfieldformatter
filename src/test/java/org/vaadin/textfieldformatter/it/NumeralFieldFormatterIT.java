@@ -27,7 +27,7 @@ public class NumeralFieldFormatterIT extends AbstractCustomTestBenchTestCase {
 		openUI(NumeralFieldFormatterUsageUI.class, NumeralFieldFormatterUsageUI.CustomValue.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
 		tf.sendKeys("-12345,801");
-		Assert.assertEquals("€12 345,801", tf.getValue());
+		Assert.assertEquals("-€12 345,801", tf.getValue());
 	}
 
 	@Test
@@ -66,7 +66,7 @@ public class NumeralFieldFormatterIT extends AbstractCustomTestBenchTestCase {
 		openUI(NumeralFieldFormatterUsageUI.class, NumeralFieldFormatterUsageUI.DecimalScale.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
 		tf.sendKeys("-12345.67890");
-		Assert.assertEquals("12,345.6789", tf.getValue());
+		Assert.assertEquals("-12,345.6789", tf.getValue());
 	}
 
 	@Test

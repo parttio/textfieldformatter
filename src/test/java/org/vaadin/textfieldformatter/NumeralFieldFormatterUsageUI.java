@@ -30,8 +30,8 @@ public class NumeralFieldFormatterUsageUI extends AbstractTest {
 		@Override
 		public Component getTestComponent() {
 			TextField tf = new TextField();
-			new NumeralFieldFormatter.Builder().delimiter(" ").decimalMark(",").decimalScale(3).prefix("€").build()
-					.extend(tf);
+			new NumeralFieldFormatter.Builder().delimiter(" ").decimalMark(",").decimalScale(3).prefix("€")
+					.signBeforePrefix(true).build().extend(tf);
 			return tf;
 		}
 
@@ -130,7 +130,7 @@ public class NumeralFieldFormatterUsageUI extends AbstractTest {
 		@Override
 		public Component getTestComponent() {
 			TextField tf = new TextField();
-			new NumeralFieldFormatter.Builder().signBeforePrefix(false).prefix("€").build().extend(tf);
+			new NumeralFieldFormatter.Builder().prefix("€").build().extend(tf);
 			return tf;
 		}
 
