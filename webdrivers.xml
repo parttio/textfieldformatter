@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<root>
+    <windows>
+         <driver id="googlechrome">
+            <version id="76.0.3809.126">
+                <bitrate thirtytwobit="true" sixtyfourbit="true">
+                    <filelocation>http://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_win32.zip</filelocation>
+                    <hash>4b673be1bce27e9177e42027ba08a54b704270fd</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+            </version>
+        </driver>
+    </windows>
+    <linux>
+        <driver id="googlechrome">
+            <version id="76.0.3809.126">
+                <bitrate sixtyfourbit="true">
+                    <filelocation>https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_linux64.zip</filelocation>
+                    <hash>632683aa20c8af87a06ae8a87c915c0b4dfcf89b</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+            </version>
+        </driver>
+    </linux>
+    <osx>
+        <driver id="googlechrome">
+            <version id="76.0.3809.126">
+                <bitrate sixtyfourbit="true">
+                    <filelocation>https://chromedriver.storage.googleapis.com/76.0.3809.126/chromedriver_mac64.zip</filelocation>
+                    <hash>f7e417258e9eb8b405dfb782346d7aa3380fde97</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+            </version>
+        </driver>
+	</osx>
+</root>
