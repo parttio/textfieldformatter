@@ -27,7 +27,7 @@ public class NumeralFieldFormatterIT extends AbstractCustomTestBenchTestCase {
 		openUI(NumeralFieldFormatterUsageUI.class, NumeralFieldFormatterUsageUI.CustomValue.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
 		tf.sendKeys("-12345,801");
-		Assert.assertEquals("12.345,801", tf.getValue());
+		Assert.assertEquals("€12 345,801", tf.getValue());
 	}
 
 	@Test
@@ -57,47 +57,47 @@ public class NumeralFieldFormatterIT extends AbstractCustomTestBenchTestCase {
 	public void numeralFieldWithIntegerScale() throws InterruptedException {
 		openUI(NumeralFieldFormatterUsageUI.class, NumeralFieldFormatterUsageUI.IntegerScale.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
-		tf.sendKeys("-12345,801");
-		Assert.assertEquals("12.345,801", tf.getValue());
+		tf.sendKeys("-123456.789");
+		Assert.assertEquals("-12,345.78", tf.getValue());
 	}
 
 	@Test
 	public void numeralFieldWithDecimalScale() throws InterruptedException {
 		openUI(NumeralFieldFormatterUsageUI.class, NumeralFieldFormatterUsageUI.DecimalScale.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
-		tf.sendKeys("-12345,801");
-		Assert.assertEquals("12.345,801", tf.getValue());
+		tf.sendKeys("-12345.67890");
+		Assert.assertEquals("12,345.6789", tf.getValue());
 	}
 
 	@Test
 	public void numeralFieldWithDecimalMark() throws InterruptedException {
 		openUI(NumeralFieldFormatterUsageUI.class, NumeralFieldFormatterUsageUI.DecimalMark.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
-		tf.sendKeys("-12345,801");
-		Assert.assertEquals("12.345,801", tf.getValue());
+		tf.sendKeys("1,2");
+		Assert.assertEquals("1,2", tf.getValue());
 	}
 
 	@Test
 	public void numeralFieldWithPositiveOnly() throws InterruptedException {
 		openUI(NumeralFieldFormatterUsageUI.class, NumeralFieldFormatterUsageUI.PositiveOnly.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
-		tf.sendKeys("-12345,801");
-		Assert.assertEquals("12.345,801", tf.getValue());
+		tf.sendKeys("-12.34");
+		Assert.assertEquals("12.34", tf.getValue());
 	}
 
 	@Test
 	public void numeralFieldWithSignBeforePrefix() throws InterruptedException {
 		openUI(NumeralFieldFormatterUsageUI.class, NumeralFieldFormatterUsageUI.SignBeforePrefix.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
-		tf.sendKeys("-12345,801");
-		Assert.assertEquals("12.345,801", tf.getValue());
+		tf.sendKeys("-123.45");
+		Assert.assertEquals("€-123.45", tf.getValue());
 	}
 
 	@Test
 	public void numeralFieldWithStripLeadingZeroes() throws InterruptedException {
 		openUI(NumeralFieldFormatterUsageUI.class, NumeralFieldFormatterUsageUI.StripLeadingZeroes.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
-		tf.sendKeys("-12345,801");
-		Assert.assertEquals("12.345,801", tf.getValue());
+		tf.sendKeys("001.23");
+		Assert.assertEquals("001.23", tf.getValue());
 	}
 }
