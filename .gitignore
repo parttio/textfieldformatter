@@ -2,5 +2,5 @@
 .project
 target
 .classpath
-drivers
+webdriver
 *.log
