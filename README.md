@@ -1,3 +1,6 @@
+[![Published on Vaadin  Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/textfield-formatter)
+[![Stars on Vaadin Directory](https://img.shields.io/vaadin-directory/star/textfield-formatter.svg)](https://vaadin.com/directory/component/textfield-formatter)
+
 # TextField Formatter
 
 This is an awesome TextField formatter extension built on top [Cleave.js](https://nosir.github.io/cleave.js/).
@@ -9,11 +12,6 @@ Supports credit card formatting and custom blocks e.g. IBAN.
 
 ### Vaadin 8
 [![Build Status](https://travis-ci.org/johannesh2/textfieldformatter.svg?branch=vaadin8)](https://travis-ci.org/johannesh2/textfieldformatter)
-
-[![Published on Vaadin  Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/textfield-formatter)
-[![Stars on Vaadin Directory](https://img.shields.io/vaadin-directory/star/textfield-formatter.svg)](https://vaadin.com/directory/component/textfield-formatter)
-
-
 
 ## Contribution instructions 
 
