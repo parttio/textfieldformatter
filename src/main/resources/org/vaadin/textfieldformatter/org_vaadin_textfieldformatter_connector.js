@@ -62,6 +62,10 @@ window.org_vaadin_textfieldformatter_NumeralFieldFormatter = function() {
 
     this.onStateChange = function(e) {
 
+        if (this.cleave) {
+            this.cleave.destroy();
+        }
+
         var options = {
             numeral : true,
             numeralDecimalScale : connector.getState().numeralDecimalScale,
@@ -77,6 +81,43 @@ window.org_vaadin_textfieldformatter_NumeralFieldFormatter = function() {
         if (connector.getState().numeralIntegerScale) {
             options.numeralIntegerScale = connector.getState().numeralIntegerScale;
         }
+        this.cleave = new Cleave(el, options);
+    };
+
+    this.onUnregister = function() {
+        this.cleave.destroy();
+    };
+
+}
+
+window.org_vaadin_textfieldformatter_DateFieldFormatter = function() {
+
+    var el = this.getElement(this.getParentId());
+    var connector = this;
+    var cleave = undefined;
+
+    this.onStateChange = function(e) {
+        if (this.cleave) {
+            this.cleave.destroy();
+        }
+
+        var options = {
+            date: true,
+            datePattern: connector.getState().datePattern
+        };
+
+        if (connector.getState().dateMin) {
+            options.dateMin = connector.getState().dateMin;
+        }
+
+        if (connector.getState().dateMax) {
+            options.dateMax = connector.getState().dateMax;
+        }
+
+        if (connector.getState().delimiter) {
+            options.delimiter = connector.getState().delimiter;
+        }
+
         this.cleave = new Cleave(el, options);
     };
 
