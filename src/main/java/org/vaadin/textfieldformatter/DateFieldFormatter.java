@@ -13,8 +13,12 @@ public class DateFieldFormatter extends CleaveExtension {
 	 * 
 	 * @param datePattern String date pattern. Supports yyyy, yy, MM, dd, e.g.
 	 *                    ddMMyyyy.
-	 * @param dateMin     Minimum date to input (inclusive). Default null.
-	 * @param dateMax     Maximum date to input (inclusive). Default null.
+	 * @param dateMin     Minimum allowed date to input (inclusive). Will transform
+	 *                    the value to the minimum if input value is earlier date.
+	 *                    Default null.
+	 * @param dateMax     Maximum date allowed to input (inclusive). Will transform
+	 *                    the value to the maximum if input value is later
+	 *                    date.Default null.
 	 * @param delimiter   Custom delimiter for the values. Default "/".
 	 */
 	public DateFieldFormatter(String datePattern, LocalDate dateMin, LocalDate dateMax, String delimiter) {
@@ -63,8 +67,8 @@ public class DateFieldFormatter extends CleaveExtension {
 
 		/***
 		 * 
-		 * @param datePattern String date pattern. Supports 'yyyy', 'yy', 'MM', 'dd', e.g.
-		 *                    ddMMyyyy.
+		 * @param datePattern String date pattern. Supports 'yyyy', 'yy', 'MM', 'dd',
+		 *                    e.g. ddMMyyyy.
 		 * @return
 		 */
 		public Builder datePattern(String datePattern) {

@@ -26,7 +26,7 @@ public class DateFieldFormatterIT extends AbstractCustomTestBenchTestCase {
 		openUI(DateFieldFormatterUI.class, DateFieldFormatterUI.AmericanDate.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
 		tf.sendKeys("a2.4.2020");
-		Assert.assertEquals("04/05/2020", tf.getValue());
+		Assert.assertEquals("02/04/2020", tf.getValue());
 	}
 
 	@Test
@@ -42,9 +42,9 @@ public class DateFieldFormatterIT extends AbstractCustomTestBenchTestCase {
 		openUI(DateFieldFormatterUI.class, DateFieldFormatterUI.MinMax.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
 		tf.sendKeys("03022019");
-		Assert.assertEquals("", tf.getValue());
+		Assert.assertEquals("04/02/2019", tf.getValue());
 		tf.sendKeys("05022019");
-		Assert.assertEquals("", tf.getValue());
+		Assert.assertEquals("04/02/2019", tf.getValue());
 		tf.sendKeys("04022019");
 		Assert.assertEquals("04/02/2019", tf.getValue());
 	}
@@ -54,7 +54,7 @@ public class DateFieldFormatterIT extends AbstractCustomTestBenchTestCase {
 		openUI(DateFieldFormatterUI.class, DateFieldFormatterUI.Min.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
 		tf.sendKeys("03022019");
-		Assert.assertEquals("", tf.getValue());
+		Assert.assertEquals("04/02/2019", tf.getValue());
 		tf.sendKeys("04022019");
 		Assert.assertEquals("04/02/2019", tf.getValue());
 	}
@@ -64,7 +64,7 @@ public class DateFieldFormatterIT extends AbstractCustomTestBenchTestCase {
 		openUI(DateFieldFormatterUI.class, DateFieldFormatterUI.Max.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
 		tf.sendKeys("04022019");
-		Assert.assertEquals("", tf.getValue());
+		Assert.assertEquals("03/02/2019", tf.getValue());
 		tf.sendKeys("03022019");
 		Assert.assertEquals("03/02/2019", tf.getValue());
 	}
