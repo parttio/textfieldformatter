@@ -34,8 +34,7 @@ public class CreditCardFieldFormatter extends CleaveExtension {
 	 * Adds this extension to a TextField. Extension cannot be moved to another
 	 * TextField again.
 	 * 
-	 * @param textField
-	 *            TextField to attach this extension to
+	 * @param textField TextField to attach this extension to
 	 */
 	public void extend(AbstractTextField textField) {
 		super.extend(textField);
@@ -52,11 +51,17 @@ public class CreditCardFieldFormatter extends CleaveExtension {
 	}
 
 	private void onCreditCardChanged(JsonArray arguments) {
-		final CreditCardType cardType = (arguments != null && arguments.length() > 0
-				&& arguments.getString(0).length() > 0) ? CreditCardType.valueOf(arguments.getString(0).toUpperCase())
-						: CreditCardType.UNKNOWN;
-		listeners
-				.forEach(l -> l.creditCardChanged(new CreditCardChangedEvent(CreditCardFieldFormatter.this, cardType)));
+		CreditCardType cardType = CreditCardType.UNKNOWN;
+		if (arguments != null && arguments.length() > 0 && arguments.getString(0).length() > 0) {
+			try {
+				cardType = CreditCardType.valueOf(arguments.getString(0).toUpperCase());
+			} catch (IllegalArgumentException e) {
+				// No matching type found
+				cardType = CreditCardType.UNKNOWN;
+			}
+		}
+		final CreditCardType ccType = cardType;
+		listeners.forEach(l -> l.creditCardChanged(new CreditCardChangedEvent(CreditCardFieldFormatter.this, ccType)));
 	}
 
 	public void removeCreditCardChangedListener(CreditCardChangedListener listener) {
