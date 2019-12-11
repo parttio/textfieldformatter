@@ -16,7 +16,7 @@
             <version id="79.0.3945.36">
                 <bitrate sixtyfourbit="true">
                     <filelocation>https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip</filelocation>
-                    <hash>a6009cbaadc86cab54982195bb760c64e926cf59</hash>
+                    <hash>3cf7d35a154ad53c7df627ad8d33d70dc941e658</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
@@ -27,7 +27,7 @@
             <version id="79.0.3945.36">
                 <bitrate sixtyfourbit="true">
                     <filelocation>https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_mac64.zip</filelocation>
-                    <hash>3cf7d35a154ad53c7df627ad8d33d70dc941e658</hash>
+                    <hash>a6009cbaadc86cab54982195bb760c64e926cf59</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
