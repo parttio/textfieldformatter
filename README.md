@@ -13,7 +13,7 @@ Supports credit card formatting and custom blocks e.g. IBAN.
 ### Vaadin 8
 [![Build Status](https://travis-ci.org/johannesh2/textfieldformatter.svg?branch=vaadin8)](https://travis-ci.org/johannesh2/textfieldformatter)
 
-## Contribution instructions 
+## If you want to run the project 
 
 1. Import this maven project to your favourite IDE
 2. Run jetty:run, navigate to localhost:8080, and select any of the test UI links
