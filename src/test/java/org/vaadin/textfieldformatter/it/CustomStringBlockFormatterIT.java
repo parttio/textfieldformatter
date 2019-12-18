@@ -47,7 +47,7 @@ public class CustomStringBlockFormatterIT extends AbstractCustomTestBenchTestCas
 		Assert.assertEquals("1-22-33A", tf.getValue());
 		$(ButtonElement.class).first().click();
 		tf.sendKeys("12233abcd");
-		Assert.assertEquals("1-*22", tf.getValue());
+		Assert.assertEquals("1-*2-", tf.getValue());
 	}
 
 	@Test
