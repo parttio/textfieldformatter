@@ -7,3 +7,4 @@ webdriver
 node_modules
 webpack.config.js
 webpack.generated.js
+/bin/
