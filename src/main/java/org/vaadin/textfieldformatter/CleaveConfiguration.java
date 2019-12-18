@@ -17,7 +17,7 @@ public class CleaveConfiguration {
 	public Boolean lowercase;
 	public Boolean numericOnly;
 	public String prefix;
-	public boolean showPrefixImmediately;
+	public Boolean showPrefixImmediately;
 
 	public Boolean numeral;
 	public Integer numeralIntegerScale;

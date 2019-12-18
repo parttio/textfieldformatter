@@ -1,6 +1,6 @@
 package org.vaadin.textfieldformatter;
 
-import org.vaadin.textfieldformatter.phone.PhoneLUFieldFormatter;
+import org.vaadin.textfieldformatter.phone.PhoneI18nFieldFormatter;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.notification.Notification;
@@ -13,7 +13,7 @@ public class BasicPhoneFieldFormatterUsageUI extends AbstractTest {
 	@Override
 	public Component getTestComponent() {
 		TextField tf = new TextField();
-		new PhoneLUFieldFormatter().extend(tf);
+		new PhoneI18nFieldFormatter(PhoneI18nFieldFormatter.REGION_GE).extend(tf);
 		tf.addValueChangeListener(l -> Notification.show("Value: " + l.getValue()));
 		return tf;
 	}

@@ -2,7 +2,6 @@ package org.vaadin.textfieldformatter.it;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.vaadin.textfieldformatter.BasicPhoneFieldFormatterUsageUI;
 
@@ -21,12 +20,11 @@ public class BasicPhoneFieldFormatterIT extends AbstractCustomTestBenchTestCase 
 	}
 
 	@Test
-	@Ignore
-	public void vaadinSalesGermany() throws InterruptedException {
+	public void germanyPhoneNumber() throws InterruptedException {
 
 		openUI(BasicPhoneFieldFormatterUsageUI.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
-		tf.sendKeys("+4915112700362");
-		Assert.assertEquals("+49 1511 2700362", tf.getValue());
+		tf.sendKeys("+49152901820");
+		Assert.assertEquals("+49 152 901820", tf.getValue());
 	}
 }
