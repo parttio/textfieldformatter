@@ -1,8 +1,7 @@
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
 import Cleave from 'cleave.js';
 /**
- * `jh-textfield-formatter`
- * Polymer 2 Web Component wrapper for Cleave.js
+ * `jh-textfield-formatter` Polymer 2 Web Component wrapper for Cleave.js
  *
  * @customElement
  * @polymer
@@ -16,30 +15,32 @@ class JhTextfieldFormatter extends PolymerElement {
         type: Object,
         observer: '_confChanged'
       },
-      _cleave: {
+      cleave: {
         type: Object
-      }
+      },
+
     };
+  }
+
+  constructor() {
+      super();
+      this._inputListener = this._onInputChange.bind(this);
   }
 
   connectedCallback() {
     super.connectedCallback();
-    if (this.cleave) {
-      this.cleave.destroy();
-      this.cleave = undefined;
-    }
-
     if (this.conf) {
       this.cleave = new Cleave(this.parentElement, this.conf);
     }
+    this.removeValueChangedFromParentElement = this._removeEventFromElement.bind(this.parentElement, 'value-changed', this._inputListener);
+    this.parentElement.addEventListener('value-changed', this._inputListener);
   }
 
   disconnectedCallback() {
+    this.removeValueChangedFromParentElement();
     super.disconnectedCallback();
-    if (this.cleave) {
-      this.cleave.destroy();
-      this.cleave = undefined;
-    }
+    this._clean();
+
   }
 
   _confChanged(newConf, oldConf) {
@@ -53,11 +54,23 @@ class JhTextfieldFormatter extends PolymerElement {
         this.$server.onCreditCardChanged(type);
       }
     }
-    if (!this.cleave) {
-      this.cleave = new Cleave(this.parentElement, newConf);
-    } else {
+
+    this._clean();
+    this.cleave = new Cleave(this.parentElement, newConf);
+  }
+
+  _onInputChange(event) {
+    this.cleave.onChange(event.target.value);
+  }
+
+  _removeEventFromElement(event, listener) {
+      this.removeEventListener(event, listener);
+  }
+
+  _clean() {
+    if (this.cleave) {
       this.cleave.destroy();
-      this.cleave = new Cleave(this.parentElement, newConf)
+      this.cleave = undefined;
     }
   }
 }

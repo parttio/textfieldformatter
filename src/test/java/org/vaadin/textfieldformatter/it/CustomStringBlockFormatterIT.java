@@ -9,6 +9,7 @@ import org.vaadin.textfieldformatter.CSBFNumericAndPrefixWithBlocksUI;
 import org.vaadin.textfieldformatter.CSBFNumericAndPrefixWithBuilderUI;
 import org.vaadin.textfieldformatter.CSBFNumericOnlyUI;
 import org.vaadin.textfieldformatter.CSBFReplacingMaskUI;
+import org.vaadin.textfieldformatter.SetValueUI;
 
 import com.vaadin.flow.component.button.testbench.ButtonElement;
 import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
@@ -74,5 +75,14 @@ public class CustomStringBlockFormatterIT extends AbstractCustomTestBenchTestCas
 		Assert.assertEquals("PREFIX:", tf.getValue());
 		tf.sendKeys("1234bbbbb");
 		Assert.assertEquals("PREFIX:1234", tf.getValue());
+	}
+
+	@Test
+	public void withSetValue() throws InterruptedException {
+		openUI(SetValueUI.class);
+		ButtonElement btn = $(ButtonElement.class).first();
+		btn.click();
+		TextFieldElement tf = $(TextFieldElement.class).first();
+		Assert.assertEquals("A-BB-CCC", tf.getValue());
 	}
 }
