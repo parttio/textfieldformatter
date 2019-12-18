@@ -13,7 +13,7 @@ public class BasicPhoneFieldFormatterUsageUI extends AbstractTest {
 	@Override
 	public Component getTestComponent() {
 		TextField tf = new TextField();
-		new PhoneI18nFieldFormatter(PhoneI18nFieldFormatter.REGION_GE).extend(tf);
+		new PhoneI18nFieldFormatter(PhoneI18nFieldFormatter.REGION_DE).extend(tf);
 		tf.addValueChangeListener(l -> Notification.show("Value: " + l.getValue()));
 		return tf;
 	}
