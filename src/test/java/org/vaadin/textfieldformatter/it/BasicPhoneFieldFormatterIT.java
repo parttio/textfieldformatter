@@ -25,6 +25,6 @@ public class BasicPhoneFieldFormatterIT extends AbstractCustomTestBenchTestCase 
 		openUI(BasicPhoneFieldFormatterUsageUI.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
 		tf.sendKeys("+49152901820");
-		Assert.assertEquals("+49 152 901820", tf.getValue());
+		Assert.assertEquals("+49 1529 01820", tf.getValue());
 	}
 }
