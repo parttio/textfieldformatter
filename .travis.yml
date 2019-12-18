@@ -1,15 +1,15 @@
 language: java
 jdk:
-  - oraclejdk8
+  - openjdk11
 sudo: true
-dist: trusty
+dist: xenial
 
 addons:
   apt:
     packages:
       - google-chrome-stable
 env:
-  - NODE_VERSION="10.16.3"
+  - NODE_VERSION="12.14.10"
 before_install:
   - nvm install $NODE_VERSION
 install: true
