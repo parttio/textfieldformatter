@@ -25,6 +25,32 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 	 */
 	public CustomStringBlockFormatter(int[] blocks, String[] delimiters, ForceCase forceCase, String prefix,
 			boolean numericOnly) {
+		this(blocks, delimiters, forceCase, prefix, true, numericOnly);
+	}
+
+	/**
+	 * Creates an instance of CustomStringBlockFormatter. Call extend to attach this
+	 * formatter to a TextField.
+	 * 
+	 * @param blocks                an array configuring the character blocks. The
+	 *                              length of the array is the number of character
+	 *                              blocks. The integers in the array are the length
+	 *                              of the blocks.
+	 * @param delimiters            the delimiter characters to be used between the
+	 *                              character blocks
+	 * @param forceCase             enumeration to control letter case of
+	 *                              characters. One of ForceCase.NONE don't touch
+	 *                              letter case. ForceCase.LOWER transform
+	 *                              characters to lower case. ForceCase.UPPER
+	 *                              transform characters to upper case.
+	 * @param prefix                String prefix for the input
+	 * @param showPrefixImmediately true if you want to show prefix before value is
+	 *                              entered i.e. always. Default true.
+	 * @param numericOnly           true for allowing numeric characters only.
+	 *                              Defaults to false.
+	 */
+	public CustomStringBlockFormatter(int[] blocks, String[] delimiters, ForceCase forceCase, String prefix,
+			boolean showPrefixImmediately, boolean numericOnly) {
 		getConfiguration().blocks = blocks;
 		getConfiguration().delimiters = delimiters;
 		if (forceCase == ForceCase.UPPER) {
@@ -35,11 +61,13 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 			getConfiguration().uppercase = false;
 		}
 		getConfiguration().prefix = prefix;
+		getConfiguration().showPrefixImmediately = showPrefixImmediately;
 		getConfiguration().numericOnly = numericOnly;
 	}
 
 	public CustomStringBlockFormatter(Options options) {
-		this(options.blocks, options.delimiters, options.forceCase, options.prefix, options.numericOnly);
+		this(options.blocks, options.delimiters, options.forceCase, options.prefix, options.showPrefixImmediately,
+				options.numericOnly);
 	}
 
 	/**
