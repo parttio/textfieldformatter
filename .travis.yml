@@ -12,5 +12,6 @@ env:
   - NODE_VERSION="12.14.0"
 before_install:
   - nvm install $NODE_VERSION
-install: true
+install:
+  - rm -rf node_modules
 script: sh ./.travis.script.sh
