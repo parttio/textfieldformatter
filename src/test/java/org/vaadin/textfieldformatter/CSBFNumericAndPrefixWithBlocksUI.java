@@ -9,7 +9,7 @@ import com.vaadin.flow.component.textfield.TextField;
 public class CSBFNumericAndPrefixWithBlocksUI extends AbstractTest {
 
 	@Override
-	public Component getTestComponent() {
+	public Component getTestComponent(UITestConfiguration configuration) {
 		TextField tf = new TextField();
 		Options fmtOptions = new Options();
 		fmtOptions.setBlocks(7, 1, 2, 3);

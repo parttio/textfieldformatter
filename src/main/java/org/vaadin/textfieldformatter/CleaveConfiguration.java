@@ -24,6 +24,9 @@ public class CleaveConfiguration {
 	public Integer numeralDecimalScale;
 	public String numeralDecimalMark;
 	public Boolean numeralPositiveOnly;
+	public String numeralThousandsGroupStyle;
+	public Boolean signBeforePrefix;
+	public Boolean stripLeadingZeroes;
 
 	public Boolean phone;
 	public String phoneRegionCode;
@@ -46,6 +49,9 @@ public class CleaveConfiguration {
 		ifNotNull(numeralDecimalScale, value -> json.put("numeralDecimalScale", value));
 		ifNotNull(numeralDecimalMark, value -> json.put("numeralDecimalMark", value));
 		ifNotNull(numeralPositiveOnly, value -> json.put("numeralPositiveOnly", value));
+		ifNotNull(numeralThousandsGroupStyle, value -> json.put("numeralThousandsGroupStyle", value));
+		ifNotNull(signBeforePrefix, value -> json.put("signBeforePrefix", value));
+		ifNotNull(stripLeadingZeroes, value -> json.put("stripLeadingZeroes", value));
 		ifNotNull(phone, value -> json.put("phone", value));
 		ifNotNull(phoneRegionCode, value -> json.put("phoneRegionCode", value));
 

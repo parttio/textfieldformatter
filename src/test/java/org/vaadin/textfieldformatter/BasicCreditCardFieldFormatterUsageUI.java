@@ -7,7 +7,7 @@ import com.vaadin.flow.component.textfield.TextField;
 public class BasicCreditCardFieldFormatterUsageUI extends AbstractTest {
 
 	@Override
-	public Component getTestComponent() {
+	public Component getTestComponent(UITestConfiguration configuration) {
 		TextField tf = new TextField();
 		tf.setPlaceholder("Insert credit card number");
 		CreditCardFieldFormatter formatter = new CreditCardFieldFormatter();

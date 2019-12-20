@@ -8,7 +8,7 @@ import com.vaadin.flow.component.textfield.TextField;
 public class CSBFNumericAndPrefixWithBuilderUI extends AbstractTest {
 
 	@Override
-	public Component getTestComponent() {
+	public Component getTestComponent(UITestConfiguration configuration) {
 		TextField tf = new TextField();
 		Builder builder = new CustomStringBlockFormatter.Builder();
 		builder.blocks(1, 2, 3).delimiters("-", "-").numeric().prefix("PREFIX:", " ");

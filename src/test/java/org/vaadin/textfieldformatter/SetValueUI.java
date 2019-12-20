@@ -10,7 +10,7 @@ import com.vaadin.flow.component.textfield.TextField;
 public class SetValueUI extends AbstractTest {
 
 	@Override
-	public Component getTestComponent() {
+	public Component getTestComponent(UITestConfiguration configuration) {
 		VerticalLayout layout = new VerticalLayout();
 		TextField tf = new TextField();
 		new CustomStringBlockFormatter(new int[] { 1, 2, 3 }, new String[] { "-", "-" }, ForceCase.NONE, null, false)

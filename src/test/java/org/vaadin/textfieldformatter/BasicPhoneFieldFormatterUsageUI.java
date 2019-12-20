@@ -11,7 +11,7 @@ public class BasicPhoneFieldFormatterUsageUI extends AbstractTest {
 	public static final String INITIAL_VALUE = "Foo!";
 
 	@Override
-	public Component getTestComponent() {
+	public Component getTestComponent(UITestConfiguration configuration) {
 		TextField tf = new TextField();
 		new PhoneI18nFieldFormatter(PhoneI18nFieldFormatter.REGION_DE).extend(tf);
 		tf.addValueChangeListener(l -> Notification.show("Value: " + l.getValue()));

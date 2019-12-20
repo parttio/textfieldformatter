@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.vaadin.textfieldformatter.AbstractTest;
+import org.vaadin.textfieldformatter.UITestConfiguration;
 
 import com.vaadin.testbench.ScreenshotOnFailureRule;
 import com.vaadin.testbench.TestBenchTestCase;
@@ -35,6 +36,10 @@ public abstract class AbstractCustomTestBenchTestCase extends TestBenchTestCase 
 		setDriver(driver);
 	}
 
+	protected <T extends org.vaadin.textfieldformatter.AbstractTest, U extends UITestConfiguration> void openUI(
+			Class<T> testClass, Class<U> uiTestConfiguration) {
+		driver.navigate().to(BASEURL + testClass.getSimpleName().toLowerCase() + "/" + uiTestConfiguration.getSimpleName());
+	}
 	protected <T extends AbstractTest> void openUI(Class<T> testClass) {
 		driver.get(BASEURL + testClass.getSimpleName().toLowerCase());
 	}

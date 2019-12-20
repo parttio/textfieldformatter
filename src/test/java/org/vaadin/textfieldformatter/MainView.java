@@ -36,6 +36,7 @@ public class MainView extends HorizontalLayout implements RouterLayout {
 		if (content != null) {
 			content.getElement().removeFromParent();
 		}
+
 		getElement().appendChild(newContent.getElement());
 		content = newContent;
 		setFlexGrow(1, content);

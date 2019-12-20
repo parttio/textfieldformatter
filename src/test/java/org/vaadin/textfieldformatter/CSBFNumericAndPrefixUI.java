@@ -8,7 +8,7 @@ import com.vaadin.flow.component.textfield.TextField;
 public class CSBFNumericAndPrefixUI extends AbstractTest {
 
 	@Override
-	public Component getTestComponent() {
+	public Component getTestComponent(UITestConfiguration configuration) {
 		TextField tf = new TextField();
 		Options fmtOptions = new Options();
 		fmtOptions.setNumericOnly(true);

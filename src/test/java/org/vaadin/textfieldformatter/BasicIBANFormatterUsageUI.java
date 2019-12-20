@@ -7,7 +7,7 @@ import com.vaadin.flow.component.textfield.TextField;
 public class BasicIBANFormatterUsageUI extends AbstractTest {
 
 	@Override
-	public Component getTestComponent() {
+	public Component getTestComponent(UITestConfiguration configuration) {
 		TextField tf = new TextField();
 		IBANFormatter.fromIBANLength(18).extend(tf);
 		tf.addValueChangeListener(l -> Notification.show("Value: " + l.getValue()));
