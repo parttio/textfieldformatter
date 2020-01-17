@@ -35,8 +35,10 @@ public abstract class CleaveExtension extends Component {
 	}
 
 	public void remove() {
-		getElement().removeFromParent();
-		extended.clear();
+		if (extended != null) {
+			getElement().removeFromParent();
+			extended.clear();
+		}
 	}
 
 	protected CleaveConfiguration getConfiguration() {
