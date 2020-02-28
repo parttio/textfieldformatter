@@ -37,9 +37,11 @@ public abstract class AbstractCustomTestBenchTestCase extends TestBenchTestCase 
 	}
 
 	protected <T extends org.vaadin.textfieldformatter.AbstractTest, U extends UITestConfiguration> void openUI(
-			Class<T> testClass, Class<U> uiTestConfiguration) {
-		driver.navigate().to(BASEURL + testClass.getSimpleName().toLowerCase() + "/" + uiTestConfiguration.getSimpleName());
+			Class<T> testClass, Class<? extends UITestConfiguration> configuration) {
+		driver.navigate().to(
+				BASEURL + testClass.getSimpleName().toLowerCase() + "/" + configuration.getSimpleName());
 	}
+
 	protected <T extends AbstractTest> void openUI(Class<T> testClass) {
 		driver.get(BASEURL + testClass.getSimpleName().toLowerCase());
 	}

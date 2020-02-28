@@ -51,6 +51,7 @@ public abstract class AbstractTest extends VerticalLayout implements HasUrlParam
 	}
 
 	private void setupWith(Component component) {
+		removeAll();
 		setContentSize(this);
 		add(component);
 		setFlexGrow(1, component);

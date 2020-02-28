@@ -1,11 +1,26 @@
 package org.vaadin.textfieldformatter;
 
 import org.vaadin.textfieldformatter.NumeralFieldFormatter.ThousandsGroupStyle;
+import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.CustomValue;
+import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.DecimalMark;
+import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.DecimalScale;
+import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.DefaultValues;
+import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.DontStripLeadingZeroes;
+import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.IntegerScale;
+import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.PositiveOnly;
+import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.SignBeforePrefix;
+import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.ThousandsGroupLakh;
+import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.ThousandsGroupNone;
+import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.ThousandsGroupThousand;
+import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.ThousandsGroupWan;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.textfield.TextField;
 
+@RouteParams({ DefaultValues.class, CustomValue.class, ThousandsGroupThousand.class, ThousandsGroupLakh.class,
+		ThousandsGroupWan.class, ThousandsGroupNone.class, IntegerScale.class, DecimalScale.class, DecimalMark.class,
+		PositiveOnly.class, SignBeforePrefix.class, DontStripLeadingZeroes.class })
 public class NumeralFieldFormatterUI extends AbstractTest {
 
 	@Override
