@@ -28,6 +28,11 @@ public class CleaveConfiguration {
 	public Boolean signBeforePrefix;
 	public Boolean stripLeadingZeroes;
 
+	public Boolean date;
+	public String[] datePattern;
+	public String dateMax;
+	public String dateMin;
+
 	public Boolean phone;
 	public String phoneRegionCode;
 
@@ -52,6 +57,10 @@ public class CleaveConfiguration {
 		ifNotNull(numeralThousandsGroupStyle, value -> json.put("numeralThousandsGroupStyle", value));
 		ifNotNull(signBeforePrefix, value -> json.put("signBeforePrefix", value));
 		ifNotNull(stripLeadingZeroes, value -> json.put("stripLeadingZeroes", value));
+		ifNotNull(date, value -> json.put("date", value));
+		ifNotNullArray(datePattern, value -> json.put("datePattern", value));
+		ifNotNull(dateMax, value -> json.put("dateMax", value));
+		ifNotNull(dateMin, value -> json.put("dateMin", value));
 		ifNotNull(phone, value -> json.put("phone", value));
 		ifNotNull(phoneRegionCode, value -> json.put("phoneRegionCode", value));
 
