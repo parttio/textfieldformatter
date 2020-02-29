@@ -2,7 +2,7 @@ language: java
 jdk:
   - oraclejdk8
 sudo: true
-dist: trusty
+dist: xenial
 
 addons:
   apt:
