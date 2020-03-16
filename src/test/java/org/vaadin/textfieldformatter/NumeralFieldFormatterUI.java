@@ -9,6 +9,7 @@ import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.DontStripLeadingZer
 import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.IntegerScale;
 import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.PositiveOnly;
 import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.SignBeforePrefix;
+import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.Postfix;
 import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.ThousandsGroupLakh;
 import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.ThousandsGroupNone;
 import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.ThousandsGroupThousand;
@@ -20,7 +21,7 @@ import com.vaadin.flow.component.textfield.TextField;
 
 @RouteParams({ DefaultValues.class, CustomValue.class, ThousandsGroupThousand.class, ThousandsGroupLakh.class,
 		ThousandsGroupWan.class, ThousandsGroupNone.class, IntegerScale.class, DecimalScale.class, DecimalMark.class,
-		PositiveOnly.class, SignBeforePrefix.class, DontStripLeadingZeroes.class })
+		PositiveOnly.class, SignBeforePrefix.class, Postfix.class, DontStripLeadingZeroes.class })
 public class NumeralFieldFormatterUI extends AbstractTest {
 
 	@Override
@@ -146,6 +147,17 @@ public class NumeralFieldFormatterUI extends AbstractTest {
 		public Component getTestComponent() {
 			TextField tf = new TextField();
 			new NumeralFieldFormatter.Builder().prefix("€").signBeforePrefix(true).build().extend(tf);
+			return tf;
+		}
+
+	}
+
+	public static class Postfix extends UITestConfiguration {
+
+		@Override
+		public Component getTestComponent() {
+			TextField tf = new TextField();
+			new NumeralFieldFormatter.Builder().prefix("€", true).build().extend(tf);
 			return tf;
 		}
 

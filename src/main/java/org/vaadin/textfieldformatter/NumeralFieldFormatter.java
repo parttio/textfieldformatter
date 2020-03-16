@@ -13,6 +13,7 @@ public class NumeralFieldFormatter extends CleaveExtension {
 	private final static boolean DEFAULT_SIGN_BEFORE_PREFIX = false;
 	private final static boolean DEFAULT_STRIP_LEADING_ZEROES = true;
 	private final static String DEFAULT_NO_PREFIX = null;
+	private final static boolean DEFAULT_TAIL_PREFIX = false;
 
 	public static enum ThousandsGroupStyle {
 		/**
@@ -68,7 +69,7 @@ public class NumeralFieldFormatter extends CleaveExtension {
 	public NumeralFieldFormatter(String delimiter, String decimalMark, int integerScale, int decimalScale,
 			boolean nonNegativeOnly) {
 		this(delimiter, decimalMark, integerScale, decimalScale, nonNegativeOnly, DEFAULT_THOUSANDS_GROUP_STYLE,
-				DEFAULT_SIGN_BEFORE_PREFIX, DEFAULT_STRIP_LEADING_ZEROES, DEFAULT_NO_PREFIX);
+				DEFAULT_SIGN_BEFORE_PREFIX, DEFAULT_STRIP_LEADING_ZEROES, DEFAULT_NO_PREFIX, DEFAULT_TAIL_PREFIX);
 	}
 
 	/**
@@ -93,6 +94,34 @@ public class NumeralFieldFormatter extends CleaveExtension {
 	public NumeralFieldFormatter(String delimiter, String decimalMark, int integerScale, int decimalScale,
 			boolean nonNegativeOnly, ThousandsGroupStyle thousandsGroupStyle, boolean signBeforePrefix,
 			boolean stripLeadingZeroes, String prefix) {
+		this(delimiter, decimalMark, integerScale, decimalScale, nonNegativeOnly, thousandsGroupStyle, signBeforePrefix,
+				stripLeadingZeroes, prefix, DEFAULT_TAIL_PREFIX);
+	}
+
+	/**
+	 * Creates a field formatter for numeral fields.
+	 *
+	 * @param delimiter           Delimiter for integer groups. Default `,`
+	 * @param decimalMark         Delimiter for decimal. Default `.`
+	 * @param integerScale        Limit the scale of integer i.e. number of digits
+	 *                            before decimal. Default no limit.
+	 * @param decimalScale        Number of decimals. Default 2.
+	 * @param nonNegativeOnly     True: allow only non-negative numbers. False:
+	 *                            Allow negative, 0 and positive. Default false.
+	 * @param thousandsGroupStyle Thousands separator grouping style see
+	 *                            {@link ThousandsGroupStyle}. Default
+	 *                            ThousandsGroupStyle.THOUSAND
+	 * @param signBeforePrefix    True if the sign of the numeral should appear
+	 *                            before the prefix. Default false.
+	 * @param stripLeadingZeroes  True if zeroes appearing at the beginning of the
+	 *                            number should be stripped out. Default true.
+	 * @param prefix              Prefix e.g. $. Default no prefix.
+	 * @param addPrefixAsPostfix  Shows the prefix as postfix/suffix (after the
+	 *                            numeral).
+	 */
+	public NumeralFieldFormatter(String delimiter, String decimalMark, int integerScale, int decimalScale,
+			boolean nonNegativeOnly, ThousandsGroupStyle thousandsGroupStyle, boolean signBeforePrefix,
+			boolean stripLeadingZeroes, String prefix, boolean addPrefixAsPostfix) {
 		getConfiguration().numeral = true;
 		getConfiguration().delimiter = delimiter;
 		getConfiguration().numeralDecimalMark = decimalMark;
@@ -105,6 +134,7 @@ public class NumeralFieldFormatter extends CleaveExtension {
 		getConfiguration().signBeforePrefix = signBeforePrefix;
 		getConfiguration().stripLeadingZeroes = stripLeadingZeroes;
 		getConfiguration().prefix = prefix;
+		getConfiguration().tailPrefix = addPrefixAsPostfix;
 	}
 
 	/**
@@ -127,6 +157,7 @@ public class NumeralFieldFormatter extends CleaveExtension {
 		private boolean signBeforePrefix = DEFAULT_SIGN_BEFORE_PREFIX;
 		private boolean stripLeadingZeroes = DEFAULT_STRIP_LEADING_ZEROES;
 		private String prefix = DEFAULT_NO_PREFIX;
+		private boolean tailPrefix = DEFAULT_TAIL_PREFIX;
 
 		public Builder delimiter(String value) {
 			delimiter = value;
@@ -169,7 +200,20 @@ public class NumeralFieldFormatter extends CleaveExtension {
 		}
 
 		public Builder prefix(String value) {
+			return prefix(value, false);
+		}
+
+		/**
+		 * Sets the prefix with possibility to add it to tail as postix/suffix with
+		 * addAsPostfix true.
+		 * 
+		 * @param value        the prefix
+		 * @param addAsPostfix true if the prefix should be shown as postfix/suffix
+		 *                     (after the numeral).
+		 */
+		public Builder prefix(String value, boolean addAsPostfix) {
 			this.prefix = value;
+			this.tailPrefix = addAsPostfix;
 			return this;
 		}
 

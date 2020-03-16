@@ -94,6 +94,14 @@ public class NumeralFieldFormatterUsageIT extends AbstractCustomTestBenchTestCas
 	}
 
 	@Test
+	public void numeralFieldWithSuffic() throws InterruptedException {
+		openUI(NumeralFieldFormatterUI.class, NumeralFieldFormatterUI.Postfix.class);
+		TextFieldElement tf = $(TextFieldElement.class).first();
+		tf.sendKeys("-123.45");
+		Assert.assertEquals("-123.45€", tf.getValue());
+	}
+
+	@Test
 	public void numeralFieldWithStripLeadingZeroes() throws InterruptedException {
 		openUI(NumeralFieldFormatterUI.class, NumeralFieldFormatterUI.DontStripLeadingZeroes.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();

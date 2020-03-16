@@ -9,7 +9,7 @@ import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
 
 @Tag("jh-textfield-formatter")
-@NpmPackage(value = "cleave.js", version = "1.5.3")
+@NpmPackage(value = "cleave.js", version = "1.5.8")
 @JsModule("cleave.js/dist/cleave-esm.js")
 @JsModule("./jh-textfield-formatter/jh-textfield-formatter.js")
 public abstract class CleaveExtension extends Component {
