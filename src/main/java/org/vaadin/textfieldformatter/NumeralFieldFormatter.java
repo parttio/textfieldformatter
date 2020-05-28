@@ -219,7 +219,7 @@ public class NumeralFieldFormatter extends CleaveExtension {
 
 		public NumeralFieldFormatter build() {
 			return new NumeralFieldFormatter(delimiter, decimalMark, integerScale, decimalScale, nonNegativeOnly,
-					thousandsGroupStyle, signBeforePrefix, stripLeadingZeroes, prefix);
+					thousandsGroupStyle, signBeforePrefix, stripLeadingZeroes, prefix, tailPrefix);
 		}
 	}
 

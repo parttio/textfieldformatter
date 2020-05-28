@@ -17,6 +17,7 @@ import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.ThousandsGroupWan;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 
 @RouteParams({ DefaultValues.class, CustomValue.class, ThousandsGroupThousand.class, ThousandsGroupLakh.class,
@@ -147,7 +148,7 @@ public class NumeralFieldFormatterUI extends AbstractTest {
 		public Component getTestComponent() {
 			TextField tf = new TextField();
 			new NumeralFieldFormatter.Builder().prefix("€").signBeforePrefix(true).build().extend(tf);
-			return tf;
+			return new VerticalLayout(tf, new TextField("Here"));
 		}
 
 	}

@@ -94,7 +94,7 @@ public class NumeralFieldFormatterUsageIT extends AbstractCustomTestBenchTestCas
 	}
 
 	@Test
-	public void numeralFieldWithSuffic() throws InterruptedException {
+	public void numeralFieldWithPostfix() throws InterruptedException {
 		openUI(NumeralFieldFormatterUI.class, NumeralFieldFormatterUI.Postfix.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
 		tf.sendKeys("-123.45");
