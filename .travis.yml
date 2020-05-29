@@ -1,12 +1,11 @@
+os: linux
 language: java
 jdk:
   - openjdk11
-sudo: true
 dist: xenial
 
 addons:
-  addons:
-    chrome: stable
+  chrome: stable
 env:
   - NODE_VERSION="12.14.0"
 before_install:
