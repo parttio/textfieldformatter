@@ -103,21 +103,7 @@
             <id>vaadin-addons</id>
             <url>http://maven.vaadin.com/vaadin-addons</url>
         </repository>
-        <repository>
-            <id>vaadin-prereleases</id>
-            <url>https://maven.vaadin.com/vaadin-prereleases</url>
-            <snapshots><enabled>false</enabled></snapshots>
-        </repository>
     </repositories>
-
-    <pluginRepositories>
-      <!-- Repository needed for prerelease versions of Vaadin -->
-      <pluginRepository>
-        <id>vaadin-prereleases</id>
-        <url>https://maven.vaadin.com/vaadin-prereleases</url>
-        <snapshots><enabled>false</enabled></snapshots>
-      </pluginRepository>
-    </pluginRepositories>
 
     <build>
         <resources>
