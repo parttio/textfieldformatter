@@ -37,6 +37,8 @@ public class CleaveConfiguration {
 	public Boolean phone;
 	public String phoneRegionCode;
 
+	public Boolean copyDelimiter;
+
 	protected JsonObject toJson() {
 		JsonObject json = Json.createObject();
 
@@ -65,6 +67,7 @@ public class CleaveConfiguration {
 		ifNotNull(dateMin, value -> json.put("dateMin", value));
 		ifNotNull(phone, value -> json.put("phone", value));
 		ifNotNull(phoneRegionCode, value -> json.put("phoneRegionCode", value));
+		ifNotNull(copyDelimiter, value -> json.put("copyDelimiter", value));
 
 		return json;
 	}

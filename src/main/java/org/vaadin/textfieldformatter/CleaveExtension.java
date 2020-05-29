@@ -17,6 +17,10 @@ public abstract class CleaveExtension extends Component {
 	private WeakReference<Component> extended;
 	private CleaveConfiguration configuration;
 
+	public CleaveExtension() {
+		getConfiguration().copyDelimiter = true;
+	}
+
 	protected void extend(Component component) {
 		if (!component.getUI().isPresent()) {
 			component.addAttachListener(event -> {
