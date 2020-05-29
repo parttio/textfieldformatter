@@ -5,9 +5,8 @@ sudo: true
 dist: xenial
 
 addons:
-  apt:
-    packages:
-      - google-chrome-stable
+  addons:
+    chrome: stable
 env:
   - NODE_VERSION="12.14.0"
 before_install:
