@@ -35,7 +35,7 @@ public class CustomStringBlockFormatterIT extends AbstractCustomTestBenchTestCas
 		openUI(CSBFNumericOnlyUI.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
 		tf.sendKeys("12233k");
-		Assert.assertEquals("1-22-33", tf.getValue());
+		Assert.assertEquals("1-22*33", tf.getValue());
 	}
 
 	@Test
