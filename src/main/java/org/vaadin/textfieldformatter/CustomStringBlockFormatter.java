@@ -211,9 +211,7 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 			options.setPrefix(prefix, showPrefixImmediately);
 			if (!blocks.isEmpty() && !delimiters.isEmpty()) {
 				options.setBlocks(blocks.stream().mapToInt(Integer::valueOf).toArray());
-				delimiters.stream().limit(delimiters.size() - 1).toArray();
-				options.setDelimiters(
-						delimiters.subList(0, delimiters.size() - 1).toArray(new String[delimiters.size() - 1]));
+				options.setDelimiters(delimiters.toArray(new String[delimiters.size()]));
 			}
 			return options;
 		}
