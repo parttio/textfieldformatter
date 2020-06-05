@@ -97,6 +97,18 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.0.0</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.jsoup</groupId>
+                    <artifactId>jsoup</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -123,8 +135,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-					<target>1.8</target>
-					<source>1.8</source>
+                    <target>1.8</target>
+                    <source>1.8</source>
                 </configuration>
             </plugin>
             <plugin>
@@ -141,9 +153,9 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.1.2</version>
                 <configuration>
-					<excludes>
-						<exclude>META-INF/VAADIN/config/flow-build-info.json</exclude>
-					</excludes>
+                    <excludes>
+                        <exclude>META-INF/VAADIN/config/flow-build-info.json</exclude>
+                    </excludes>
                     <archive>
                         <index>true</index>
                         <manifest>
@@ -235,7 +247,7 @@
         </profile>
         <profile>
             <id>ci</id>
-	        <build>
+            <build>
                 <plugins>
                     <plugin>
                         <groupId>com.vaadin</groupId>
@@ -296,24 +308,6 @@
                                 <goals>
                                     <goal>integration-test</goal>
                                     <goal>verify</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        
-                    </plugin>
-                    <plugin>
-                        <groupId>com.lazerycode.selenium</groupId>
-                        <artifactId>driver-binary-downloader-maven-plugin</artifactId>
-                        <version>1.0.18</version>
-                        <configuration>
-                            <downloadedZipFileDirectory>${project.basedir}/webdriver/zips</downloadedZipFileDirectory>
-                            <rootStandaloneServerDirectory>${project.basedir}/webdriver</rootStandaloneServerDirectory>
-                            <customRepositoryMap>${project.basedir}/webdrivers.xml</customRepositoryMap>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>selenium</goal>
                                 </goals>
                             </execution>
                         </executions>
