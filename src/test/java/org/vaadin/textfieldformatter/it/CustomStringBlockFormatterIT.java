@@ -78,6 +78,16 @@ public class CustomStringBlockFormatterIT extends AbstractCustomTestBenchTestCas
 	}
 
 	@Test
+	public void customBlocksWithLazyDelimiter() throws InterruptedException {
+		openUI(CSBFDelimitersUI.class, CSBFDelimitersUI.LazyDelimiter.class);
+		TextFieldElement tf = $(TextFieldElement.class).first();
+		tf.sendKeys("1");
+		Assert.assertEquals("1", tf.getValue());
+		tf.sendKeys("2");
+		Assert.assertEquals("1-2", tf.getValue());
+	}
+
+	@Test
 	public void withSetValue() throws InterruptedException {
 		openUI(SetValueUI.class);
 		ButtonElement btn = $(ButtonElement.class).first();

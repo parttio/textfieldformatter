@@ -13,6 +13,7 @@ public class CleaveConfiguration {
 
 	public int[] blocks;
 	public String[] delimiters;
+	public Boolean delimiterLazyShow;
 	public Boolean uppercase;
 	public Boolean lowercase;
 	public Boolean numericOnly;
@@ -47,6 +48,7 @@ public class CleaveConfiguration {
 		ifNotNull(delimiter, value -> json.put("delimiter", value));
 		ifNotNullArray(blocks, value -> json.put("blocks", value));
 		ifNotNullArray(delimiters, value -> json.put("delimiters", value));
+		ifNotNull(delimiterLazyShow, value -> json.put("delimiterLazyShow", value));
 		ifNotNull(uppercase, value -> json.put("uppercase", value));
 		ifNotNull(lowercase, value -> json.put("lowercase", value));
 		ifNotNull(numericOnly, value -> json.put("numericOnly", value));

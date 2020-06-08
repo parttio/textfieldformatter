@@ -25,7 +25,7 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 	 */
 	public CustomStringBlockFormatter(int[] blocks, String[] delimiters, ForceCase forceCase, String prefix,
 			boolean numericOnly) {
-		this(blocks, delimiters, forceCase, prefix, true, numericOnly);
+		this(blocks, delimiters, false, forceCase, prefix, true, numericOnly);
 	}
 
 	/**
@@ -51,8 +51,14 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 	 */
 	public CustomStringBlockFormatter(int[] blocks, String[] delimiters, ForceCase forceCase, String prefix,
 			boolean showPrefixImmediately, boolean numericOnly) {
+		this(blocks, delimiters, false, forceCase, prefix, showPrefixImmediately, numericOnly);
+	}
+
+	private CustomStringBlockFormatter(int[] blocks, String[] delimiters, boolean lazyDelimiter, ForceCase forceCase,
+			String prefix, boolean showPrefixImmediately, boolean numericOnly) {
 		getConfiguration().blocks = blocks;
 		getConfiguration().delimiters = delimiters;
+		getConfiguration().delimiterLazyShow = lazyDelimiter;
 		if (forceCase == ForceCase.UPPER) {
 			getConfiguration().lowercase = false;
 			getConfiguration().uppercase = true;
@@ -66,8 +72,8 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 	}
 
 	public CustomStringBlockFormatter(Options options) {
-		this(options.blocks, options.delimiters, options.forceCase, options.prefix, options.showPrefixImmediately,
-				options.numericOnly);
+		this(options.blocks, options.delimiters, options.lazyDelimiter, options.forceCase, options.prefix,
+				options.showPrefixImmediately, options.numericOnly);
 	}
 
 	/**
@@ -90,6 +96,7 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 		private ForceCase _case;
 		private boolean numeric;
 		private final ArrayList<String> delimiters = new ArrayList<>();
+		private boolean lazyDelimiter = false;
 		private final ArrayList<Integer> blocks = new ArrayList<>();
 
 		/**
@@ -178,6 +185,17 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 		}
 
 		/**
+		 * Show the delimiter only when the user starts typing the next group section.
+		 * Default is false.
+		 * 
+		 * @return
+		 */
+		public Builder delimiterLazyShow() {
+			lazyDelimiter = true;
+			return this;
+		}
+
+		/**
 		 * Allows only numeric characters. Default is allowing any character.
 		 * 
 		 * @return this Builder
@@ -213,6 +231,7 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 				options.setBlocks(blocks.stream().mapToInt(Integer::valueOf).toArray());
 				options.setDelimiters(delimiters.toArray(new String[delimiters.size()]));
 			}
+			options.setDelimiterLazyShow(lazyDelimiter);
 			return options;
 		}
 	}
@@ -220,6 +239,7 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 	public static class Options {
 		private int[] blocks;
 		private String[] delimiters = null;
+		private boolean lazyDelimiter = false;
 		private ForceCase forceCase = ForceCase.NONE;
 		private boolean numericOnly = false;
 		private String prefix;
@@ -231,8 +251,14 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 
 		public Options(int[] blocks, String[] delimiters, ForceCase forceCase, String prefix,
 				boolean showPrefixImmediately, boolean numericOnly) {
+			this(blocks, delimiters, false, forceCase, prefix, showPrefixImmediately, numericOnly);
+		}
+
+		public Options(int[] blocks, String[] delimiters, boolean delimiterLazyShow, ForceCase forceCase, String prefix,
+				boolean showPrefixImmediately, boolean numericOnly) {
 			this.blocks = blocks;
 			this.delimiters = delimiters;
+			this.lazyDelimiter = delimiterLazyShow;
 			this.forceCase = forceCase;
 			this.prefix = prefix;
 			this.showPrefixImmediately = showPrefixImmediately;
@@ -240,8 +266,8 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 		}
 
 		public Options(Options options) {
-			this(options.blocks, options.delimiters, options.forceCase, options.prefix, options.showPrefixImmediately,
-					options.numericOnly);
+			this(options.blocks, options.delimiters, options.lazyDelimiter, options.forceCase, options.prefix,
+					options.showPrefixImmediately, options.numericOnly);
 		}
 
 		public Options() {
@@ -262,6 +288,19 @@ public class CustomStringBlockFormatter extends CleaveExtension {
 
 		public void setDelimiters(String... delimiters) {
 			this.delimiters = delimiters;
+		}
+
+		/**
+		 * 
+		 * @param lazy if true, will lazy add the delimiter only when the user starting
+		 *             typing the next group section. Default is false.
+		 */
+		public void setDelimiterLazyShow(boolean lazy) {
+			this.lazyDelimiter = lazy;
+		}
+
+		public boolean isDelimiterLazyShow() {
+			return lazyDelimiter;
 		}
 
 		public ForceCase getForceCase() {
