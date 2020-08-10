@@ -22,22 +22,14 @@ class JhTextfieldFormatter extends PolymerElement {
     };
   }
 
-  constructor() {
-      super();
-      this._inputListener = this._onInputChange.bind(this);
-  }
-
   connectedCallback() {
     super.connectedCallback();
     if (this.conf) {
       this.cleave = new Cleave(this.parentElement, this.conf);
     }
-    this.removeValueChangedFromParentElement = this._removeEventFromElement.bind(this.parentElement, 'value-changed', this._inputListener);
-    this.parentElement.addEventListener('value-changed', this._inputListener);
   }
 
   disconnectedCallback() {
-    this.removeValueChangedFromParentElement();
     super.disconnectedCallback();
     this._clean();
 
@@ -57,14 +49,6 @@ class JhTextfieldFormatter extends PolymerElement {
 
     this._clean();
     this.cleave = new Cleave(this.parentElement, newConf);
-  }
-
-  _onInputChange(event) {
-    this.cleave.onChange(event.target.value);
-  }
-
-  _removeEventFromElement(event, listener) {
-      this.removeEventListener(event, listener);
   }
 
   _clean() {
