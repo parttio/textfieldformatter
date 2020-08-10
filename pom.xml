@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.vaadin</groupId>
     <artifactId>textfieldformatter</artifactId>
-    <version>5.2.0.pre</version>
+    <version>5.2-SNAPSHOT</version>
     <name>TextField Formatter</name>
     <packaging>jar</packaging>
     <organization>
@@ -27,7 +27,7 @@
         <url>https://github.com/${github.account}/${github.project}</url>
         <connection>scm:git:git://github.com/${github.account}/${github.project}.git</connection>
         <developerConnection>scm:git:ssh://git@github.com:/${github.account}/${github.project}.git</developerConnection>
-        <tag>v5.2.0.pre</tag>
+        <tag>v3.0.alpha1</tag>
     </scm>
     <issueManagement>
         <system>GitHub</system>
