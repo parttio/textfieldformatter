@@ -24,15 +24,17 @@ class JhTextfieldFormatter extends PolymerElement {
 
   connectedCallback() {
     super.connectedCallback();
-    if (this.conf) {
+    if (this.conf && !this.cleave) {
       this.cleave = new Cleave(this.parentElement, this.conf);
     }
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this._clean();
-
+    if (this.cleave) {
+      this.cleave.destroy();
+      this.cleave = undefined;
+    }
   }
 
   _confChanged(newConf, oldConf) {
@@ -47,15 +49,11 @@ class JhTextfieldFormatter extends PolymerElement {
       }
     }
 
-    this._clean();
-    this.cleave = new Cleave(this.parentElement, newConf);
-  }
-
-  _clean() {
     if (this.cleave) {
       this.cleave.destroy();
       this.cleave = undefined;
     }
+    this.cleave = new Cleave(this.parentElement, newConf);
   }
 }
 

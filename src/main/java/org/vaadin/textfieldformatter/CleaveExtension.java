@@ -7,6 +7,7 @@ import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
+import com.vaadin.flow.shared.Registration;
 
 @Tag("jh-textfield-formatter")
 @NpmPackage(value = "cleave.js", version = "1.6.0")
@@ -16,6 +17,7 @@ public abstract class CleaveExtension extends Component {
 
 	private WeakReference<Component> extended;
 	private CleaveConfiguration configuration;
+	private Registration attachRegistration = null;
 
 	public CleaveExtension() {
 		getConfiguration().copyDelimiter = true;
@@ -23,7 +25,7 @@ public abstract class CleaveExtension extends Component {
 
 	protected void extend(Component component) {
 		if (!component.getUI().isPresent()) {
-			component.addAttachListener(event -> {
+			attachRegistration = component.addAttachListener(event -> {
 				extend(component, event.getUI());
 			});
 
@@ -39,6 +41,10 @@ public abstract class CleaveExtension extends Component {
 	}
 
 	public void remove() {
+		if (attachRegistration != null) {
+			attachRegistration.remove();
+			attachRegistration = null;
+		}
 		if (extended != null) {
 			getElement().removeFromParent();
 			extended.clear();

@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.vaadin.textfieldformatter.BasicIBANFormatterUsageUI;
 import org.vaadin.textfieldformatter.CSBFDelimitersUI;
 import org.vaadin.textfieldformatter.CSBFNumericAndPrefixUI;
 import org.vaadin.textfieldformatter.CSBFNumericAndPrefixWithBlocksUI;
@@ -20,6 +21,22 @@ public class CustomStringBlockFormatterIT extends AbstractCustomTestBenchTestCas
 	@Before
 	public void init() {
 		startBrowser();
+	}
+
+	@Test
+	public void basicIban() throws InterruptedException {
+		openUI(BasicIBANFormatterUsageUI.class, BasicIBANFormatterUsageUI.BasicIBAN.class);
+		TextFieldElement tf = $(TextFieldElement.class).first();
+		tf.sendKeys("FI42500015100000231");
+		Assert.assertEquals("FI42 5000 1510 0000 23", tf.getValue());
+	}
+
+	@Test
+	public void replaceIbanFormatter() throws InterruptedException {
+		openUI(BasicIBANFormatterUsageUI.class, BasicIBANFormatterUsageUI.ReplaceIBAN.class);
+		TextFieldElement tf = $(TextFieldElement.class).first();
+		tf.sendKeys("FI425000151000002319999");
+		Assert.assertEquals("FI42 5000 1510 0000 2319 99", tf.getValue());
 	}
 
 	@Test
@@ -47,8 +64,10 @@ public class CustomStringBlockFormatterIT extends AbstractCustomTestBenchTestCas
 		tf.sendKeys("12233abcd");
 		Assert.assertEquals("1-22-33A", tf.getValue());
 		$(ButtonElement.class).first().click();
+		Assert.assertEquals("1-*22", tf.getValue());
+		tf.clear();
 		tf.sendKeys("12233abcd");
-		Assert.assertEquals("1-*2-", tf.getValue());
+		Assert.assertEquals("12*23", tf.getValue());
 	}
 
 	@Test
