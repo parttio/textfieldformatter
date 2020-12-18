@@ -65,8 +65,8 @@ public class NumeralFieldFormatterUsageIT extends AbstractCustomTestBenchTestCas
 	public void numeralFieldWithDecimalScale() throws InterruptedException {
 		openUI(NumeralFieldFormatterUI.class, NumeralFieldFormatterUI.DecimalScale.class);
 		TextFieldElement tf = $(TextFieldElement.class).first();
-		tf.sendKeys("-12345.67890");
-		Assert.assertEquals("-12,345.6789", tf.getValue());
+		tf.sendKeys("-12345,6789012");
+		Assert.assertEquals("-12.345,678901", tf.getValue());
 	}
 
 	@Test

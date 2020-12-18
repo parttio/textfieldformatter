@@ -114,7 +114,7 @@ public class NumeralFieldFormatterUI extends AbstractTest {
 		@Override
 		public Component getTestComponent() {
 			TextField tf = new TextField();
-			new NumeralFieldFormatter.Builder().decimalScale(4).build().extend(tf);
+			new NumeralFieldFormatter(".", ",", 6).extend(tf);
 			return tf;
 		}
 
