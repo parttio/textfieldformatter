@@ -25,7 +25,7 @@ class JhTextfieldFormatter extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     if (this.conf && !this.cleave) {
-      this.cleave = new Cleave(this.parentElement, this.conf);
+      this.cleave = new Cleave(this.parentElement.shadowRoot.querySelector('input'), this.conf);
     }
   }
 
@@ -53,7 +53,7 @@ class JhTextfieldFormatter extends PolymerElement {
       this.cleave.destroy();
       this.cleave = undefined;
     }
-    this.cleave = new Cleave(this.parentElement, newConf);
+    this.cleave = new Cleave(this.parentElement.shadowRoot.querySelector('input'), newConf);
   }
 }
 
