@@ -25,7 +25,9 @@ class JhTextfieldFormatter extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     if (this.conf && !this.cleave) {
-      this.cleave = new Cleave(this.parentElement.shadowRoot.querySelector('input'), this.conf);
+      let el = this.parentElement.shadowRoot.querySelector('input'); // retrocompatibility purposes
+      if(!el) el = this.parentElement.querySelector('input');
+      this.cleave = new Cleave(el, this.conf);
     }
   }
 
@@ -53,7 +55,9 @@ class JhTextfieldFormatter extends PolymerElement {
       this.cleave.destroy();
       this.cleave = undefined;
     }
-    this.cleave = new Cleave(this.parentElement.shadowRoot.querySelector('input'), newConf);
+    let el = this.parentElement.shadowRoot.querySelector('input'); // retrocompatibility purposes
+    if(!el) el = this.parentElement.querySelector('input');
+    this.cleave = new Cleave(el, newConf);
   }
 }
 
