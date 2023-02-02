@@ -18,6 +18,7 @@ public abstract class AbstractTest extends VerticalLayout implements HasUrlParam
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	public AbstractTest() {
+		setClassName("test-root");
 	}
 
 	@Override

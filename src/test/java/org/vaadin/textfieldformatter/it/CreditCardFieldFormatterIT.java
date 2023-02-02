@@ -1,28 +1,27 @@
 package org.vaadin.textfieldformatter.it;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.time.Duration;
+
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.vaadin.textfieldformatter.BasicCreditCardFieldFormatterUsageUI;
 
-import com.vaadin.flow.component.notification.testbench.NotificationElement;
-import com.vaadin.flow.component.textfield.testbench.TextFieldElement;
-
-public class CreditCardFieldFormatterIT extends AbstractCustomTestBenchTestCase {
-
-	@Before
-	public void init() {
-		startBrowser();
-	}
+public class CreditCardFieldFormatterIT extends AbstractSeleniumJupiterTestCase {
 
 	@Test
 	public void validVisaNumber() throws InterruptedException {
-		openUI(BasicCreditCardFieldFormatterUsageUI.class);
-		TextFieldElement tf = $(TextFieldElement.class).first();
+		WebElement root = openUI(BasicCreditCardFieldFormatterUsageUI.class);
+
+		TextFieldElement tf = new TextFieldElement(root);
 		tf.sendKeys("4");
-		NotificationElement notification = $(NotificationElement.class).onPage().first();
-		Assert.assertEquals("VISA", notification.getText());
+		WebElement notification = new WebDriverWait(getDriver(), Duration.ofSeconds(3))
+				.until(driver -> driver.findElement(By.tagName("vaadin-notification-card")));
+		assertEquals("VISA", notification.getText());
 		tf.sendKeys("000000000000000");
-		Assert.assertEquals("4000 0000 0000 0000", tf.getValue());
+		wait("4000 0000 0000 0000", tf);
 	}
 }

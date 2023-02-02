@@ -5,6 +5,7 @@ import org.vaadin.textfieldformatter.CustomStringBlockFormatter.Options;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 
@@ -21,11 +22,13 @@ public class CSBFReplacingMaskUI extends AbstractTest {
 	public Component getTestComponent(UITestConfiguration configuration) {
 		VerticalLayout layout = new VerticalLayout();
 		textField = new TextField();
+		textField.setMaxLength(8);
 		current = new CustomStringBlockFormatter(formatterA);
 		current.extend(textField);
 
 		Button toggleButton = new Button("SWITCH", event -> {
 			replaceFormatter(textField, formatterB);
+			Notification.show(textField.getValue());
 		});
 		toggleButton.setId("switch");
 		toggleButton.setDisableOnClick(true);
