@@ -1,5 +1,10 @@
 import { PolymerElement } from '@polymer/polymer/polymer-element.js';
 import Cleave from 'cleave.js';
+
+if (typeof window.JH.AsYouTypeFormatter === 'function' && typeof window.Cleave.AsYouTypeFormatter === 'undefined') {
+	window.Cleave.AsYouTypeFormatter = window.JH.AsYouTypeFormatter;
+}
+
 /**
  * `jh-textfield-formatter` Polymer 2 Web Component wrapper for Cleave.js
  *

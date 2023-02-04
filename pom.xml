@@ -12,7 +12,7 @@
 	</organization>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<vaadin.version>23.3.0</vaadin.version>
+		<vaadin.version>23.3.5</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<!-- ZIP Manifest fields -->
 		<Implementation-Version>${project.version}</Implementation-Version>
@@ -108,7 +108,6 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>4.1.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -217,7 +216,7 @@
 						<artifactId>jetty-maven-plugin</artifactId>
 						<version>9.4.45.v20220203</version>
 						<configuration>
-							<scanIntervalSeconds>2</scanIntervalSeconds>
+							<scanIntervalSeconds>0</scanIntervalSeconds>
 							<useTestScope>true</useTestScope>
 							<supportedPackagings>
 								<supportedPackaging>jar</supportedPackaging>

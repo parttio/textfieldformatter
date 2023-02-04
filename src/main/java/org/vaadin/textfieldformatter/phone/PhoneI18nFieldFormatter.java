@@ -3,18 +3,10 @@ package org.vaadin.textfieldformatter.phone;
 import org.vaadin.textfieldformatter.AbstractPhoneFieldFormatter;
 
 import com.vaadin.flow.component.dependency.JsModule;
+import com.vaadin.flow.component.dependency.NpmPackage;
 
-/**
- * Formatter for phone numbers. Provide the region code in the constructor. This
- * formatter includes all the regions supported by Cleave into a single bundle
- * resulting in a bigger file size loaded by the browser. Use this if you need
- * to support more than one region or want to create formatters without knowing the class
- * name compile time. If you want to support specific regions separately, use
- * PhoneXXFieldFormatter classes, e.g. PhoneUSFieldFormatter.
- * 
- * 
- */
-@JsModule("cleave.js/dist/addons/cleave-phone.i18n.js")
+@JsModule( "./jh-textfield-formatter/import-libphonenumber.js")
+@NpmPackage(value = "google-libphonenumber", version = "3.2.32")
 public class PhoneI18nFieldFormatter extends AbstractPhoneFieldFormatter {
 
 	public PhoneI18nFieldFormatter(String phoneRegionCode) {
