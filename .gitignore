@@ -4,7 +4,10 @@ target
 .classpath
 webdriver
 *.log
-node_modules
+node_modules/
+frontend/generated/
+pnpmfile.js
 webpack.config.js
 webpack.generated.js
+vite.generated.ts
 /bin/

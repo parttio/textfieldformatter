@@ -5,6 +5,7 @@ import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteConfiguration;
 import com.vaadin.flow.router.RouteData;
@@ -14,7 +15,6 @@ import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
 
 @Route
-@Theme(Lumo.class)
 public class MainView extends HorizontalLayout implements RouterLayout {
 
 	private VerticalLayout menu;
@@ -54,5 +54,10 @@ public class MainView extends HorizontalLayout implements RouterLayout {
 		getElement().appendChild(newContent.getElement());
 		content = newContent;
 		setFlexGrow(1, content);
+	}
+
+	@Theme(themeClass = Lumo.class)
+	public static class Config implements AppShellConfigurator {
+
 	}
 }
