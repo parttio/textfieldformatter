@@ -14,15 +14,19 @@ import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.ThousandsGroupLakh;
 import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.ThousandsGroupNone;
 import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.ThousandsGroupThousand;
 import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.ThousandsGroupWan;
+import org.vaadin.textfieldformatter.NumeralFieldFormatterUI.BinderRequiredValidation;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.value.ValueChangeMode;
 
 @RouteParams({ DefaultValues.class, CustomValue.class, ThousandsGroupThousand.class, ThousandsGroupLakh.class,
 		ThousandsGroupWan.class, ThousandsGroupNone.class, IntegerScale.class, DecimalScale.class, DecimalMark.class,
-		PositiveOnly.class, SignBeforePrefix.class, Postfix.class, DontStripLeadingZeroes.class })
+		PositiveOnly.class, SignBeforePrefix.class, Postfix.class, DontStripLeadingZeroes.class,
+		BinderRequiredValidation.class})
 public class NumeralFieldFormatterUI extends AbstractTest {
 
 	@Override
@@ -173,5 +177,34 @@ public class NumeralFieldFormatterUI extends AbstractTest {
 			return tf;
 		}
 
+	}
+
+	public static class BinderRequiredValidation extends UITestConfiguration {
+
+		private String value;
+
+		@Override
+		public Component getTestComponent() {
+			TextField tf = new TextField();
+			tf.setValueChangeMode(ValueChangeMode.EAGER);
+			tf.addValueChangeListener(l -> Notification.show("Value: " + l.getValue()));
+
+			new NumeralFieldFormatter().extend(tf);
+
+			Binder<BinderRequiredValidation> binder = new Binder<>();
+			binder.forField(tf)
+					.asRequired("This value is required")
+					.bind(BinderRequiredValidation::getValue, BinderRequiredValidation::setValue);
+
+			return tf;
+		}
+
+		public String getValue() {
+			return value;
+		}
+
+		public void setValue(String value) {
+			this.value = value;
+		}
 	}
 }

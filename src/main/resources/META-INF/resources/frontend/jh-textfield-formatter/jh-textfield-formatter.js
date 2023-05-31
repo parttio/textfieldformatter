@@ -56,6 +56,11 @@ class JhTextfieldFormatter extends PolymerElement {
       }
     }
 
+    newConf.onValueChanged = (event) => {
+      const inputElementValue = event.target.value;
+      this.parentElement.value = inputElementValue;
+    }
+
     if (this.cleave) {
       this.cleave.destroy();
       this.cleave = undefined;
