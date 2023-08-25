@@ -44,6 +44,10 @@ class JhTextfieldFormatter extends PolymerElement {
     }
   }
 
+  getRawValue() {
+    return this.cleave.getRawValue();
+  }
+
   _confChanged(newConf, oldConf) {
     if (!newConf) {
       return;
@@ -54,6 +58,11 @@ class JhTextfieldFormatter extends PolymerElement {
       newConf.onCreditCardTypeChanged = type => {
         this.$server.onCreditCardChanged(type);
       }
+    }
+
+    newConf.onValueChanged = (event) => {
+      const inputElementValue = event.target.value;
+      this.parentElement.value = inputElementValue;
     }
 
     if (this.cleave) {
