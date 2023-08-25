@@ -44,6 +44,10 @@ class JhTextfieldFormatter extends PolymerElement {
     }
   }
 
+  getRawValue() {
+    return this.cleave.getRawValue();
+  }
+
   _confChanged(newConf, oldConf) {
     if (!newConf) {
       return;

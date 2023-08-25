@@ -1,13 +1,14 @@
 package org.vaadin.textfieldformatter;
 
-import java.lang.ref.WeakReference;
-
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.dependency.NpmPackage;
+import com.vaadin.flow.function.SerializableConsumer;
 import com.vaadin.flow.shared.Registration;
+
+import java.lang.ref.WeakReference;
 
 @Tag("jh-textfield-formatter")
 @NpmPackage(value = "cleave.js", version = "1.6.0")
@@ -38,6 +39,10 @@ public abstract class CleaveExtension extends Component {
 		component.getElement().appendChild(getElement());
 		getElement().setPropertyJson("conf", getConfiguration().toJson());
 	}
+
+	public void getRawValue(SerializableConsumer<String> onValueObtained) {
+		getElement().callJsFunction("getRawValue").then(String.class, onValueObtained);
+    }
 
 	public void remove() {
 		if (attachRegistration != null) {

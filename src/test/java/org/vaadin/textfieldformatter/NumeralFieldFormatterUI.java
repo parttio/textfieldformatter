@@ -189,7 +189,12 @@ public class NumeralFieldFormatterUI extends AbstractTest {
 			tf.setValueChangeMode(ValueChangeMode.EAGER);
 			tf.addValueChangeListener(l -> Notification.show("Value: " + l.getValue()));
 
-			new NumeralFieldFormatter().extend(tf);
+			final NumeralFieldFormatter numeralFieldFormatter = new NumeralFieldFormatter();
+			numeralFieldFormatter.extend(tf);
+
+			tf.addValueChangeListener(l ->
+					numeralFieldFormatter.getRawValue(rawValue -> Notification.show("Raw value: " + rawValue))
+			);
 
 			Binder<BinderRequiredValidation> binder = new Binder<>();
 			binder.forField(tf)
