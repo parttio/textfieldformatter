@@ -13,6 +13,7 @@ import java.lang.ref.WeakReference;
 @Tag("jh-textfield-formatter")
 @NpmPackage(value = "cleave.js", version = "1.6.0")
 @JsModule("./jh-textfield-formatter/jh-textfield-formatter.js")
+@JsModule("./jh-textfield-formatter/import-libphonenumber.js")
 public abstract class CleaveExtension extends Component {
 
 	private WeakReference<Component> extended;
