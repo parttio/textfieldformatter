@@ -1,12 +1,13 @@
 package org.vaadin.textfieldformatter;
 
+import java.io.Serializable;
 import java.util.function.Consumer;
 
 import elemental.json.Json;
 import elemental.json.JsonArray;
 import elemental.json.JsonObject;
 
-public class CleaveConfiguration {
+public class CleaveConfiguration implements Serializable {
 	public Boolean creditCard;
 	public Boolean creditCardStrictMode;
 	public String delimiter;
