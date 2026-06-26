@@ -17,3 +17,11 @@ Supports credit card formatting and custom blocks e.g. IBAN.
 
 1. Import this maven project to your favourite IDE
 2. Run jetty:run, navigate to localhost:8080, and select any of the test UI links
+
+# Deprecated
+
+This add-on will probably not be updated to Vaadin 25 since cleave.js is deprecated and not maintained anymore.
+
+For Vaadin 25, there is this add-on: https://github.com/vaadin-component-factory/textfieldformatter-zen and https://vaadin.com/directory/component/cleave-zen-textfield-formatter
+
+It's using cleave zen js which is more up to date
